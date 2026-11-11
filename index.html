@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#3b5bdb">
+<title>English Coach - Học nói tiếng Anh</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg">
+<style>:root{--bg:#f4f6fb;--card:#fff;--ink:#1d2433;--mute:#667089;--line:#e3e8f2;--pri:#3b5bdb;--pri2:#eef2ff;--ok:#2b8a3e;--okbg:#e6f6ea;--bad:#c92a2a;--badbg:#fdeaea;--warn:#e8890c;--warnbg:#fff4e0;--r:16px}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:16px;line-height:1.5}
+#app{max-width:620px;margin:0 auto;min-height:100vh;padding:14px 14px 150px}
+h1{font-size:22px;margin:4px 0 2px}h2{font-size:18px;margin:18px 0 8px}h3{font-size:16px;margin:12px 0 6px}
+p{margin:6px 0}.mute{color:var(--mute)}.sm{font-size:13px}.c{text-align:center}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px;margin:10px 0;box-shadow:0 1px 2px rgba(20,30,60,.04)}
+.card.tap{cursor:pointer}.card.tap:active{background:var(--pri2)}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.sp{justify-content:space-between}.grow{flex:1}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{appearance:none;border:1px solid var(--pri);background:var(--pri);color:#fff;border-radius:12px;padding:11px 16px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit}
+.btn:active{filter:brightness(.92)}.btn.sec{background:var(--pri2);color:var(--pri)}
+.btn.ghost{background:transparent;color:var(--pri)}.btn.sm{padding:7px 11px;font-size:13px;border-radius:10px}
+.btn.ok{background:var(--ok);border-color:var(--ok)}.btn.bad{background:var(--bad);border-color:var(--bad)}.btn.warn{background:var(--warn);border-color:var(--warn)}
+.btn.block{display:block;width:100%}.btn[disabled]{opacity:.45}
+.chip{display:inline-block;padding:5px 11px;border-radius:999px;background:var(--pri2);color:var(--pri);font-size:13px;margin:3px 4px 3px 0;border:1px solid transparent;cursor:pointer}
+.chip.on{background:var(--pri);color:#fff}.chip.plain{background:#f0f2f7;color:var(--ink);cursor:default}
+.badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;background:#eef;color:var(--pri);font-weight:700}
+.badge.g{background:var(--okbg);color:var(--ok)}.badge.o{background:var(--warnbg);color:var(--warn)}
+input[type=text],input[type=search],textarea,select{width:100%;border:1px solid var(--line);border-radius:12px;padding:11px 12px;font-size:16px;font-family:inherit;background:#fff;color:var(--ink)}
+textarea{min-height:110px;resize:vertical}label{display:block;font-size:13px;color:var(--mute);margin:10px 0 4px;font-weight:600}
+nav{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:center;z-index:20;padding-bottom:env(safe-area-inset-bottom)}
+nav .in{display:flex;width:100%;max-width:620px}
+nav a{flex:1;text-align:center;padding:8px 2px 7px;color:var(--mute);text-decoration:none;font-size:11px;font-weight:600}
+nav a b{display:block;font-size:21px;line-height:1.1}nav a.on{color:var(--pri)}
+.top{display:flex;align-items:center;gap:8px;margin-bottom:6px}.back{background:none;border:0;font-size:24px;color:var(--pri);padding:0 8px 0 0;cursor:pointer}
+.qtext{font-size:20px;font-weight:700;line-height:1.35}
+.sample{background:#fafbff;border-left:4px solid var(--pri);padding:10px 12px;border-radius:8px;margin:8px 0}
+.abar{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.w{border-bottom:1px dotted #aab;cursor:pointer}.w:active{background:#ffe99a}
+.sent{display:inline}.sent.cur{background:#fff3bf;border-radius:4px}
+.stat{text-align:center;padding:10px 4px}.stat b{display:block;font-size:22px;color:var(--pri)}.stat span{font-size:12px;color:var(--mute)}
+.prog{height:8px;background:#e8ecf6;border-radius:99px;overflow:hidden}.prog i{display:block;height:100%;background:var(--pri)}
+.todo{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);cursor:pointer}.todo:last-child{border:0}
+.todo .ck{width:26px;height:26px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:14px;flex:none}
+.todo.done .ck{background:var(--ok);border-color:var(--ok);color:#fff}
+.flash{position:relative;min-height:230px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:22px;cursor:pointer}
+.flash .big{font-size:30px;font-weight:800}
+.opt{display:block;width:100%;text-align:left;padding:13px 14px;margin:8px 0;border-radius:12px;border:2px solid var(--line);background:#fff;font-size:16px;font-family:inherit;cursor:pointer}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.bad{border-color:var(--bad);background:var(--badbg)}
+.pairs{display:grid;grid-template-columns:1fr 1fr;gap:8px}.pairs .opt{margin:0;text-align:center;padding:12px 6px;font-size:15px}.pairs .opt.sel{border-color:var(--pri);background:var(--pri2)}.pairs .opt.gone{visibility:hidden}
+#sheet{position:fixed;inset:0;background:rgba(15,20,40,.45);display:none;align-items:flex-end;justify-content:center;z-index:50}
+#sheet.show{display:flex}#sheet .box{background:#fff;width:100%;max-width:620px;max-height:88vh;overflow:auto;border-radius:20px 20px 0 0;padding:16px 16px 28px}
+#np{position:fixed;left:10px;right:10px;bottom:70px;max-width:600px;margin:0 auto;background:#1d2433;color:#fff;border-radius:14px;padding:10px 12px;display:none;z-index:30;gap:10px;align-items:center}
+#np.show{display:flex}#np .t{flex:1;font-size:14px}#np small{opacity:.7;display:block;font-size:11px}
+#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:120px;background:#1d2433;color:#fff;padding:10px 16px;border-radius:12px;font-size:14px;z-index:60;display:none;max-width:90%}
+.diff span{padding:1px 3px;border-radius:4px;margin-right:2px;display:inline-block}.diff .g{background:var(--okbg);color:var(--ok)}.diff .r{background:var(--badbg);color:var(--bad);text-decoration:underline}
+.rec{width:74px;height:74px;border-radius:50%;border:0;background:var(--bad);color:#fff;font-size:30px;cursor:pointer;display:grid;place-items:center;margin:0 auto}
+.rec.on{animation:pulse 1.1s infinite}@keyframes pulse{50%{box-shadow:0 0 0 14px rgba(201,42,42,.15)}}
+details>summary{cursor:pointer;font-weight:700;padding:6px 0}pre.rep{white-space:pre-wrap;font-size:12px;background:#f6f7fb;padding:10px;border-radius:10px;max-height:300px;overflow:auto}
+.note{background:var(--warnbg);color:#7a4a00;border-radius:12px;padding:10px 12px;font-size:13px;margin:8px 0}
+.stars button{background:none;border:0;font-size:24px;color:#cdd3e2;cursor:pointer;padding:0 2px}.stars button.on{color:#f5b301}
+</style>
+</head>
+<body>
+<div id="app"><div id="view"></div></div>
+<div id="np"><div class="t"></div><button class="btn sm" data-act="stop">⏹</button></div>
+<div id="toast"></div>
+<div id="sheet"><div class="box"></div></div>
+<nav><div class="in">
+<a href="#home" data-r="home"><b>🏠</b>Hôm nay</a>
+<a href="#speak" data-r="speak"><b>🎙️</b>Nói</a>
+<a href="#vocab" data-r="vocab"><b>🔤</b>Từ vựng</a>
+<a href="#more" data-r="more"><b>📚</b>Học thêm</a>
+<a href="#me" data-r="me"><b>👤</b>Hồ sơ</a>
+</div></nav>
+<script>
+/* ===== Seed data: band 5.0-5.5, communication + IELTS ===== */
+const TOPICS = [
+  { id: "family", vi: "Gia đình & bản thân", ic: "👨‍👩‍👧" },
+  { id: "hometown", vi: "Quê hương & nơi ở", ic: "🏡" },
+  { id: "food", vi: "Ăn uống", ic: "🍜" },
+  { id: "work", vi: "Công việc & học tập", ic: "💼" },
+  { id: "hobbies", vi: "Sở thích", ic: "🎧" },
+  { id: "travel", vi: "Du lịch", ic: "✈️" },
+  { id: "tech", vi: "Công nghệ", ic: "📱" },
+  { id: "health", vi: "Sức khỏe", ic: "💪" }
+];
+
+/* word, nghĩa, ví dụ */
+const SEED_VOCAB = {
+  family: [
+    ["relatives", "họ hàng", "I have many relatives in the countryside."],
+    ["get along with", "hòa thuận với", "I get along with my sister very well."],
+    ["close-knit", "gắn bó, thân thiết", "We are a close-knit family."],
+    ["only child", "con một", "I am an only child, so I feel a bit lonely."],
+    ["grow up", "lớn lên", "I grew up in a small town."],
+    ["take care of", "chăm sóc", "My mother takes care of my grandparents."],
+    ["generation", "thế hệ", "Three generations live in my house."],
+    ["strict", "nghiêm khắc", "My father is quite strict about homework."],
+    ["support", "ủng hộ, hỗ trợ", "My parents always support my decisions."],
+    ["be similar to", "giống với", "I am similar to my mother in many ways."]
+  ],
+  hometown: [
+    ["countryside", "vùng quê", "I love the fresh air in the countryside."],
+    ["crowded", "đông đúc", "The city centre is always crowded."],
+    ["peaceful", "yên bình", "My village is quiet and peaceful."],
+    ["traffic jam", "tắc đường", "I was late because of a traffic jam."],
+    ["neighbourhood", "khu phố", "It is a friendly neighbourhood."],
+    ["local", "địa phương", "Local people are very kind."],
+    ["tourist attraction", "điểm tham quan", "The old town is a famous tourist attraction."],
+    ["public transport", "phương tiện công cộng", "Public transport is cheap here."],
+    ["cost of living", "chi phí sinh hoạt", "The cost of living in big cities is high."],
+    ["convenient", "tiện lợi", "It is convenient to live near the market."]
+  ],
+  food: [
+    ["delicious", "ngon", "The soup was absolutely delicious."],
+    ["spicy", "cay", "I can't eat very spicy food."],
+    ["ingredient", "nguyên liệu", "Fresh ingredients make the dish tasty."],
+    ["recipe", "công thức nấu ăn", "I learned this recipe from my grandmother."],
+    ["junk food", "đồ ăn vặt, đồ ăn nhanh", "Eating too much junk food is unhealthy."],
+    ["cuisine", "ẩm thực", "Vietnamese cuisine is famous around the world."],
+    ["vegetarian", "người ăn chay", "My friend is vegetarian, so we chose a veggie restaurant."],
+    ["snack", "đồ ăn nhẹ", "I usually have a snack in the afternoon."],
+    ["cook", "nấu ăn", "I cook dinner for my family twice a week."],
+    ["be fond of", "thích", "I am fond of seafood."]
+  ],
+  work: [
+    ["major", "chuyên ngành", "My major is business."],
+    ["deadline", "hạn chót", "I have a deadline on Friday."],
+    ["colleague", "đồng nghiệp", "My colleagues are friendly and helpful."],
+    ["salary", "lương", "The salary is not high, but the job is stable."],
+    ["experience", "kinh nghiệm", "I have two years of experience in sales."],
+    ["career", "sự nghiệp", "I want to build a career in marketing."],
+    ["part-time job", "việc làm thêm", "I had a part-time job when I was a student."],
+    ["challenging", "đầy thử thách", "My job is challenging but interesting."],
+    ["be responsible for", "chịu trách nhiệm về", "I am responsible for customer service."],
+    ["graduate", "tốt nghiệp", "I graduated from university in 2022."]
+  ],
+  hobbies: [
+    ["spare time", "thời gian rảnh", "In my spare time, I listen to music."],
+    ["relax", "thư giãn", "Reading helps me relax after work."],
+    ["be keen on", "đam mê, thích", "I am keen on photography."],
+    ["go hiking", "đi bộ đường dài", "We go hiking in the mountains every summer."],
+    ["practise", "luyện tập", "I practise English every evening."],
+    ["entertainment", "giải trí", "Watching films is my main entertainment."],
+    ["creative", "sáng tạo", "Painting makes me feel creative."],
+    ["take up", "bắt đầu (một sở thích)", "I took up yoga last year."],
+    ["hang out", "đi chơi, tụ tập", "I often hang out with friends at weekends."],
+    ["enjoy", "tận hưởng, thích", "I really enjoy cooking for my friends."]
+  ],
+  travel: [
+    ["journey", "chuyến đi", "The journey took about five hours."],
+    ["destination", "điểm đến", "Da Nang is a popular destination."],
+    ["luggage", "hành lý", "My luggage was very heavy."],
+    ["book a ticket", "đặt vé", "I booked a ticket online."],
+    ["sightseeing", "tham quan", "We went sightseeing all day."],
+    ["accommodation", "chỗ ở", "Accommodation in the city centre is expensive."],
+    ["passport", "hộ chiếu", "Don't forget your passport."],
+    ["itinerary", "lịch trình", "Our itinerary included three cities."],
+    ["souvenir", "quà lưu niệm", "I bought a small souvenir for my mother."],
+    ["Could you tell me the way to...?", "Bạn chỉ giúp đường đến ... được không?", "Excuse me, could you tell me the way to the station?"]
+  ],
+  tech: [
+    ["smartphone", "điện thoại thông minh", "I use my smartphone every day."],
+    ["application", "ứng dụng", "This application helps me learn English."],
+    ["online", "trực tuyến", "I often study online."],
+    ["download", "tải xuống", "I downloaded a new app yesterday."],
+    ["social media", "mạng xã hội", "I spend too much time on social media."],
+    ["device", "thiết bị", "Many people use more than one device."],
+    ["battery", "pin", "My phone battery runs out quickly."],
+    ["update", "cập nhật", "Please update the app to the latest version."],
+    ["be addicted to", "nghiện", "Some teenagers are addicted to games."],
+    ["useful", "hữu ích", "Maps are very useful when I travel."]
+  ],
+  health: [
+    ["exercise", "tập thể dục", "I exercise three times a week."],
+    ["balanced diet", "chế độ ăn cân bằng", "A balanced diet is good for your health."],
+    ["stressed", "căng thẳng", "I feel stressed before exams."],
+    ["fit", "khỏe mạnh, cân đối", "She keeps fit by swimming."],
+    ["get enough sleep", "ngủ đủ giấc", "I try to get enough sleep every night."],
+    ["habit", "thói quen", "Drinking water is a good habit."],
+    ["energy", "năng lượng", "Breakfast gives me energy for the day."],
+    ["take a rest", "nghỉ ngơi", "You should take a rest if you feel tired."],
+    ["see a doctor", "đi khám bác sĩ", "If it gets worse, see a doctor."],
+    ["recover", "hồi phục", "It took me a week to recover from the flu."]
+  ]
+};
+
+/* ===== Speaking Part 1 / 2 / 3 ===== */
+const SPEAKING = [
+  /* ---- Part 1 ---- */
+  { id: "p1-fam-1", part: 1, topic: "family", q: "Tell me about your family.", hint: "Nói về số người, ai làm gì, bạn thân ai nhất.",
+    ideas: ["number of people", "parents' jobs", "who you are close to"],
+    sample: "There are four people in my family: my parents, my younger brother and me. My father is an engineer and my mother is a teacher. I am very close to my mother because she always listens to me. We often have dinner together in the evening, and I really enjoy that time.",
+    phrases: ["There are ... people in my family", "I am very close to ...", "We often ... together"] },
+  { id: "p1-fam-2", part: 1, topic: "family", q: "Do you get along well with your family members?", hint: "Có hòa thuận không? Ví dụ cụ thể.",
+    ideas: ["yes + reason", "an example", "small arguments"],
+    sample: "Yes, I do. We get along quite well because we talk to each other a lot. Of course, sometimes my brother and I argue about small things, like using the TV, but we always make up quickly. I think a close-knit family is really important.",
+    phrases: ["We get along well because...", "Of course, sometimes...", "I think ... is really important"] },
+  { id: "p1-fam-3", part: 1, topic: "family", q: "What do you usually do with your family at weekends?", hint: "Hoạt động cuối tuần cùng gia đình.",
+    ideas: ["eat out", "visit relatives", "stay at home"],
+    sample: "At weekends, we usually have a big lunch together. Sometimes we visit my grandparents in the countryside, and my mother cooks traditional dishes. If the weather is nice, we go to the park. It is a good way to relax after a busy week.",
+    phrases: ["At weekends, we usually...", "Sometimes we...", "It is a good way to relax"] },
+
+  { id: "p1-home-1", part: 1, topic: "hometown", q: "Where is your hometown?", hint: "Nằm ở đâu, nổi tiếng gì.",
+    ideas: ["location", "famous for", "size"],
+    sample: "My hometown is a small city in the north of Vietnam. It is about two hours from Hanoi by bus. It is famous for its beautiful lake and delicious local food. It is not very big, so life there is quiet and slow.",
+    phrases: ["My hometown is ... in the north/south of...", "It is famous for...", "life there is quiet"] },
+  { id: "p1-home-2", part: 1, topic: "hometown", q: "Do you like living in your city? Why?", hint: "Thích/không thích + 2 lý do.",
+    ideas: ["convenient", "friendly people", "problems: traffic, noise"],
+    sample: "Yes, I do. It is very convenient because there are many shops, schools and hospitals near my house. People here are also friendly. However, the traffic is sometimes terrible, especially in the morning, and that makes me a little tired.",
+    phrases: ["It is very convenient because...", "However, ...", "especially in the morning"] },
+  { id: "p1-home-3", part: 1, topic: "hometown", q: "What do you like most about your neighbourhood?", hint: "Điều bạn thích nhất ở khu phố.",
+    ideas: ["neighbours", "food street", "safe"],
+    sample: "What I like most is the neighbours. They are kind and always say hello when we meet. There is also a small market near my house where I can buy fresh vegetables every morning. I feel very safe and comfortable there.",
+    phrases: ["What I like most is...", "There is also...", "I feel very safe"] },
+
+  { id: "p1-food-1", part: 1, topic: "food", q: "What kind of food do you like?", hint: "Món yêu thích + lý do.",
+    ideas: ["favourite dish", "taste", "who cooks it"],
+    sample: "I am fond of noodle soup, especially pho. I like it because the soup is hot and tasty, and it is not too heavy. I often have it for breakfast, and my mother cooks it really well at home.",
+    phrases: ["I am fond of...", "I like it because...", "especially..."] },
+  { id: "p1-food-2", part: 1, topic: "food", q: "Do you cook at home?", hint: "Có nấu không? Nấu gì? Thường xuyên không?",
+    ideas: ["how often", "simple dishes", "learn from"],
+    sample: "Yes, I cook dinner about twice a week. I can make simple dishes like fried rice and vegetable soup. I learned some recipes from my grandmother. Cooking is a good way to relax, and my family enjoys my meals.",
+    phrases: ["I cook ... about twice a week", "I can make simple dishes like...", "I learned ... from..."] },
+  { id: "p1-food-3", part: 1, topic: "food", q: "Do you prefer eating at home or in restaurants?", hint: "Chọn một + so sánh.",
+    ideas: ["healthy", "cheaper", "social"],
+    sample: "I prefer eating at home. It is cheaper and healthier because I can choose fresh ingredients. However, I sometimes go to restaurants with friends at weekends because it is a good chance to chat and try new dishes.",
+    phrases: ["I prefer ...ing", "It is cheaper and healthier", "a good chance to..."] },
+
+  { id: "p1-work-1", part: 1, topic: "work", q: "Do you work or are you a student?", hint: "Công việc/học gì, thích điểm nào.",
+    ideas: ["job/major", "how long", "what you like"],
+    sample: "I work as an office worker in a small company. I have been there for about two years. My job is to prepare documents and answer customers' emails. It is sometimes stressful, but I like my colleagues because they are very helpful.",
+    phrases: ["I work as...", "I have been there for...", "It is sometimes stressful, but..."] },
+  { id: "p1-work-2", part: 1, topic: "work", q: "Why did you choose that job / major?", hint: "Lý do chọn.",
+    ideas: ["interest", "family advice", "future"],
+    sample: "I chose it because I am interested in business and I think it has good opportunities in the future. My parents also gave me some advice. Although it is challenging, I have learned a lot of useful skills.",
+    phrases: ["I chose it because...", "Although it is challenging, ...", "I have learned a lot of..."] },
+  { id: "p1-work-3", part: 1, topic: "work", q: "What do you want to do in the future?", hint: "Kế hoạch tương lai.",
+    ideas: ["career goal", "study abroad", "improve English"],
+    sample: "In the future, I want to improve my English and get a better job. Maybe I will work for an international company. That is why I am studying IELTS now. I hope I can reach band 5.5 or higher.",
+    phrases: ["In the future, I want to...", "That is why I am...", "I hope I can..."] },
+
+  { id: "p1-hob-1", part: 1, topic: "hobbies", q: "What do you do in your free time?", hint: "2-3 hoạt động + lý do.",
+    ideas: ["listen to music", "watch films", "meet friends"],
+    sample: "In my free time, I usually listen to music or watch films. On weekends, I hang out with my friends and we drink coffee together. I think these activities help me relax after a stressful week.",
+    phrases: ["In my free time, I usually...", "I hang out with...", "help me relax"] },
+  { id: "p1-hob-2", part: 1, topic: "hobbies", q: "Have you ever tried a new hobby?", hint: "Sở thích mới đã thử.",
+    ideas: ["what", "why", "result"],
+    sample: "Yes, last year I took up yoga. I wanted to reduce stress and keep fit. At first it was difficult, but now I practise three times a week and I feel more energetic.",
+    phrases: ["I took up...", "I wanted to...", "At first ..., but now..."] },
+  { id: "p1-hob-3", part: 1, topic: "hobbies", q: "Do you prefer indoor or outdoor activities?", hint: "Chọn + lý do.",
+    ideas: ["weather", "health", "friends"],
+    sample: "I prefer outdoor activities, like cycling or going for a walk, because they are good for my health and I can enjoy fresh air. But when it rains, I stay at home and read books.",
+    phrases: ["I prefer ... because...", "good for my health", "But when it rains, ..."] },
+
+  { id: "p1-trv-1", part: 1, topic: "travel", q: "Do you like travelling?", hint: "Thích không, vì sao.",
+    ideas: ["new places", "relax", "culture"],
+    sample: "Yes, I love travelling. It helps me relax and learn about new cultures. I also enjoy trying local food in different places. I try to take at least one trip every year.",
+    phrases: ["I love travelling", "learn about new cultures", "at least one trip every year"] },
+  { id: "p1-trv-2", part: 1, topic: "travel", q: "Where did you go on your last holiday?", hint: "Quá khứ đơn! Đi đâu, với ai, làm gì.",
+    ideas: ["place", "with whom", "activities"],
+    sample: "Last summer, I went to Da Nang with my friends. We stayed in a small hotel near the beach. We swam in the sea every morning and ate a lot of seafood. It was a wonderful trip and I want to go back again.",
+    phrases: ["Last summer, I went to...", "We stayed in...", "It was a wonderful trip"] },
+  { id: "p1-trv-3", part: 1, topic: "travel", q: "Do you prefer travelling alone or with others?", hint: "Chọn + lý do.",
+    ideas: ["safe", "fun", "share cost"],
+    sample: "I prefer travelling with others. It is safer and more fun, and we can share the cost of hotels and transport. Also, we can take photos of each other and share memories later.",
+    phrases: ["I prefer travelling with...", "share the cost", "share memories"] },
+
+  { id: "p1-tec-1", part: 1, topic: "tech", q: "How often do you use your smartphone?", hint: "Tần suất + dùng làm gì.",
+    ideas: ["every day", "messages", "learning"],
+    sample: "I use my smartphone every day, almost all day. I check messages, read news and use applications to learn English. Sometimes I spend too much time on social media, so I'm trying to reduce it.",
+    phrases: ["I use ... every day", "spend too much time on...", "I'm trying to reduce it"] },
+  { id: "p1-tec-2", part: 1, topic: "tech", q: "What is your favourite app?", hint: "App + vì sao hữu ích.",
+    ideas: ["name", "why useful", "how often"],
+    sample: "My favourite app is a music app because I can listen to my favourite songs anywhere. It helps me relax on the bus. I also use a dictionary app to look up new words, which is very useful for my English study.",
+    phrases: ["My favourite app is...", "because I can...", "which is very useful for..."] },
+  { id: "p1-tec-3", part: 1, topic: "tech", q: "Do you think technology makes life easier?", hint: "Ý kiến + 1 lợi, 1 hại.",
+    ideas: ["advantage", "disadvantage"],
+    sample: "Yes, I think so. We can pay bills, shop and study online, so it saves a lot of time. However, people may spend less time talking face to face, which is a pity.",
+    phrases: ["Yes, I think so", "it saves a lot of time", "However, ..."] },
+
+  { id: "p1-hlt-1", part: 1, topic: "health", q: "What do you do to stay healthy?", hint: "Thói quen tốt.",
+    ideas: ["exercise", "diet", "sleep"],
+    sample: "I try to exercise three times a week, usually jogging in the park. I also eat a lot of vegetables and drink enough water. I go to bed before eleven because I think getting enough sleep is very important.",
+    phrases: ["I try to...", "drink enough water", "getting enough sleep is important"] },
+  { id: "p1-hlt-2", part: 1, topic: "health", q: "Do you often feel stressed?", hint: "Có không, cách giải tỏa.",
+    ideas: ["when", "what you do"],
+    sample: "Sometimes, especially when I have a lot of work or before exams. When I feel stressed, I listen to music or go for a walk. Talking to my friends also helps me feel better.",
+    phrases: ["Sometimes, especially when...", "When I feel stressed, I...", "helps me feel better"] },
+  { id: "p1-hlt-3", part: 1, topic: "health", q: "Is it easy to eat healthily in your country?", hint: "Dễ/khó + lý do.",
+    ideas: ["fresh food", "fast food", "price"],
+    sample: "I think it is quite easy because we have a lot of fresh vegetables and fruit at cheap prices. But nowadays there is more fast food, and many young people choose it because it is quick and convenient.",
+    phrases: ["I think it is quite easy because...", "But nowadays...", "quick and convenient"] },
+
+  /* ---- Part 2 ---- */
+  { id: "p2-1", part: 2, topic: "family", q: "Describe a person you admire.",
+    cue: ["Who this person is", "How you know him/her", "What he/she does", "and explain why you admire this person"],
+    hint: "1 phút chuẩn bị, nói 1-2 phút. Dùng: who / how / what / why.",
+    ideas: ["name + relationship", "personality", "one story", "what you learned"],
+    sample: "I would like to talk about my mother, who I admire the most. She is a primary school teacher, and she has worked hard for more than twenty years. She is kind, patient and very strong. When I was a child, my family had some difficult times, but she never gave up. She worked during the day and took care of us in the evening. I admire her because she taught me to be responsible and to keep trying. I hope that one day I can be as strong as she is.",
+    phrases: ["I would like to talk about...", "I admire her because...", "She never gave up", "I hope that one day..."] },
+  { id: "p2-2", part: 2, topic: "travel", q: "Describe a place you have visited and liked.",
+    cue: ["Where it is", "When you went there", "What you did there", "and explain why you liked it"],
+    hint: "Dùng quá khứ. Mô tả 3 giác quan: nhìn, nghe, ăn.",
+    ideas: ["name + location", "trip details", "best moment", "feeling"],
+    sample: "I'd like to describe Hoi An, an ancient town in central Vietnam. I went there two years ago with my friends in spring. We walked around the old streets, took a lot of photos and ate local dishes like cao lau. In the evening, the town was beautiful with colourful lanterns on the river. I liked it because it was peaceful and full of history. It was one of my best trips and I would love to go back.",
+    phrases: ["I'd like to describe...", "I went there ... ago with...", "full of history", "I would love to go back"] },
+  { id: "p2-3", part: 2, topic: "food", q: "Describe a meal you enjoyed.",
+    cue: ["What the meal was", "Where you had it", "Who you had it with", "and explain why you enjoyed it"],
+    hint: "Kể món, nơi, người, cảm xúc.",
+    ideas: ["dish", "place", "people", "taste + atmosphere"],
+    sample: "I'd like to talk about a family dinner on my grandmother's birthday last year. We had it at her house in the countryside. My mother and aunts cooked many traditional dishes, such as spring rolls, grilled fish and sticky rice. Everything was fresh and delicious. I enjoyed it because the whole family was together, and everyone was laughing and telling stories. It was a very warm and happy evening.",
+    phrases: ["I'd like to talk about...", "such as...", "Everything was fresh and delicious", "the whole family was together"] },
+  { id: "p2-4", part: 2, topic: "tech", q: "Describe a useful app or device you use.",
+    cue: ["What it is", "How often you use it", "What you use it for", "and explain why it is useful"],
+    hint: "Nói tính năng cụ thể + ví dụ.",
+    ideas: ["name", "frequency", "features", "benefits"],
+    sample: "I'd like to talk about my smartphone, which I use every day. I use it to send messages, check emails and study English with apps. It is useful because I can carry it everywhere, and it saves me a lot of time. For example, I can find directions with a map app, so I never get lost. I can't imagine my life without it.",
+    phrases: ["which I use every day", "I use it to...", "it saves me a lot of time", "I can't imagine my life without it"] },
+
+  /* ---- Part 3 ---- */
+  { id: "p3-1", part: 3, topic: "family", q: "Why do some people prefer to live with their parents when they are adults?",
+    hint: "Đưa 2 lý do: tiền & tình cảm.", ideas: ["save money", "family support"],
+    sample: "I think there are two main reasons. First, housing is very expensive, so living with parents helps young people save money. Second, many families are close-knit, and people feel safe and supported when they live together.",
+    phrases: ["I think there are two main reasons", "First, ... Second, ...", "feel safe and supported"] },
+  { id: "p3-2", part: 3, topic: "work", q: "What makes a job satisfying?",
+    hint: "Lương, đồng nghiệp, ý nghĩa.", ideas: ["salary", "colleagues", "development"],
+    sample: "In my opinion, a good salary is important, but it is not everything. A friendly team and chances to learn new skills also make people happy at work. If a job has meaning, people will feel proud of it.",
+    phrases: ["In my opinion, ...", "it is not everything", "chances to learn new skills"] },
+  { id: "p3-3", part: 3, topic: "tech", q: "Do you think children should use smartphones?",
+    hint: "Lợi + hại + giải pháp.", ideas: ["learning", "addiction", "parents' rules"],
+    sample: "It depends on their age. Smartphones can help children study and learn new things, but too much screen time is bad for their eyes and sleep. So I think parents should set clear rules, for example one hour a day.",
+    phrases: ["It depends on...", "too much screen time", "parents should set clear rules"] },
+  { id: "p3-4", part: 3, topic: "health", q: "Why do many people not exercise regularly?",
+    hint: "Thiếu thời gian, lười, công việc.", ideas: ["busy", "lazy", "sitting jobs"],
+    sample: "Mainly because they are busy. Many people work long hours and feel tired after work. Some people also think exercise is boring. I think a short walk every day is a simple solution.",
+    phrases: ["Mainly because...", "work long hours", "a simple solution"] },
+  { id: "p3-5", part: 3, topic: "travel", q: "How has tourism changed in your country in recent years?",
+    hint: "So sánh trước/nay.", ideas: ["more visitors", "online booking", "problems"],
+    sample: "There are many more tourists than before, and people can book hotels and tickets online easily. This is good for the economy. However, some famous places have become too crowded and dirty.",
+    phrases: ["There are many more ... than before", "good for the economy", "too crowded"] },
+  { id: "p3-6", part: 3, topic: "hobbies", q: "Why is it important for people to have hobbies?",
+    hint: "Giảm stress, kết bạn, kỹ năng.", ideas: ["reduce stress", "make friends", "skills"],
+    sample: "Hobbies help people reduce stress after work. They can also meet new friends who share the same interests. Besides, some hobbies, like cooking or painting, can teach people useful skills.",
+    phrases: ["reduce stress", "share the same interests", "Besides, ..."] },
+
+  /* ---- Giao tiếp hằng ngày ---- */
+  { id: "c-1", part: 0, topic: "food", q: "Gọi món ở nhà hàng (Ordering food)",
+    hint: "Tình huống: bạn vào quán, gọi món và hỏi giá.",
+    ideas: ["greeting", "order", "ask for the bill"],
+    sample: "Waiter: Good evening. Are you ready to order? — Yes, I'd like the grilled chicken and a glass of orange juice, please. — Would you like anything else? — No, that's all for now. Could you bring me the bill later? — Of course. Enjoy your meal!",
+    phrases: ["I'd like ..., please", "Could you bring me the bill?", "What do you recommend?", "Is this dish spicy?"] },
+  { id: "c-2", part: 0, topic: "travel", q: "Hỏi đường (Asking for directions)",
+    hint: "Tình huống: bạn bị lạc và cần đến ga tàu.",
+    ideas: ["excuse me", "ask", "repeat to confirm"],
+    sample: "Excuse me, could you tell me the way to the train station? — Sure. Go straight for two blocks, then turn left. It is next to the bank. — Is it far from here? — No, it takes about five minutes on foot. — Thank you so much!",
+    phrases: ["Excuse me, could you tell me the way to...?", "Go straight / turn left / turn right", "How far is it?", "Could you say that again, please?"] },
+  { id: "c-3", part: 0, topic: "family", q: "Tự giới thiệu (Introducing yourself)",
+    hint: "Tình huống: gặp người mới ở lớp hoặc công ty.",
+    ideas: ["name", "from", "job/study", "hobby"],
+    sample: "Hi, I'm Linh. Nice to meet you. I'm from Hai Phong, but I live in Hanoi now. I work as an accountant, and in my free time I enjoy reading and cooking. What about you?",
+    phrases: ["Nice to meet you", "I'm from...", "I work as... / I study...", "What about you?"] },
+  { id: "c-4", part: 0, topic: "work", q: "Xin phép nghỉ/đổi lịch (Asking politely)",
+    hint: "Tình huống: xin sếp đổi lịch họp.",
+    ideas: ["sorry to bother", "reason", "suggest new time"],
+    sample: "Excuse me, do you have a minute? I'm sorry, but I can't join the meeting at three o'clock because I have a doctor's appointment. Would it be possible to move it to four? — Sure, no problem. — Thank you for understanding.",
+    phrases: ["Do you have a minute?", "Would it be possible to...?", "I'm sorry, but I can't...", "Thank you for understanding"] },
+  { id: "c-5", part: 0, topic: "tech", q: "Gọi điện đặt lịch (Phone call: making an appointment)",
+    hint: "Tình huống: gọi phòng khám đặt lịch.",
+    ideas: ["introduce", "purpose", "time", "confirm"],
+    sample: "Hello, this is Nam speaking. I'd like to make an appointment for tomorrow morning, please. — Let me check. Is ten o'clock okay? — Yes, that's fine. — Could I have your phone number? — Sure, it's 09 1234 5678. — Great, see you tomorrow.",
+    phrases: ["This is ... speaking", "I'd like to make an appointment", "Is ... okay for you?", "Could you repeat that, please?"] },
+  { id: "c-6", part: 0, topic: "hobbies", q: "Trò chuyện xã giao (Small talk)",
+    hint: "Tình huống: nói chuyện với đồng nghiệp lúc nghỉ trưa.",
+    ideas: ["weekend", "weather", "interests"],
+    sample: "How was your weekend? — It was great, thanks. I went to the beach with my family. How about you? — I stayed at home and watched films. — Sounds relaxing! Do you have any plans for next weekend?",
+    phrases: ["How was your weekend?", "Sounds great / relaxing!", "How about you?", "Do you have any plans for...?"] }
+];
+
+/* ===== Reading ===== */
+const READING = [
+  { id: "r1", title: "A Day in the Life of a Student", text: "Mai is a university student in Hanoi. She gets up at six o'clock every morning and has a quick breakfast before she goes to school by bus. Her classes start at seven thirty and finish at noon. In the afternoon, she works part-time in a small bookshop. She likes this job because she can read books for free and meet interesting people. In the evening, she studies English for one hour. She wants to study abroad, so she needs a good IELTS score. On weekends, she relaxes by cooking with her mother or watching films with friends.",
+    qs: [
+      { q: "How does Mai go to school?", o: ["By bike", "By bus", "On foot"], a: 1 },
+      { q: "Why does she like her part-time job?", o: ["The salary is high", "It is near her house", "She can read books for free"], a: 2 },
+      { q: "Mai wants to study abroad.", o: ["True", "False", "Not given"], a: 0 }
+    ] },
+  { id: "r2", title: "Why Sleep Is Important", text: "Many people think sleep is not very important, but doctors say adults need seven to nine hours of sleep every night. When we sleep, our body rests and our brain stores new information. If we do not get enough sleep, we feel tired, find it hard to concentrate and may get sick more often. To sleep better, experts suggest going to bed at the same time every day and avoiding phones for an hour before bedtime. A quiet, dark room can also help.",
+    qs: [
+      { q: "How many hours of sleep do adults need?", o: ["5 to 6 hours", "7 to 9 hours", "10 to 12 hours"], a: 1 },
+      { q: "What happens when we do not sleep enough?", o: ["We find it hard to concentrate", "We become taller", "We eat less"], a: 0 },
+      { q: "Experts recommend using the phone before bedtime.", o: ["True", "False", "Not given"], a: 1 }
+    ] },
+  { id: "r3", title: "Street Food in Vietnam", text: "Street food is an important part of Vietnamese culture. In the morning, people eat pho or banh mi at small stalls on the pavement. These dishes are cheap, fresh and quick to prepare. Many tourists say that street food is the best way to taste the real flavours of a country. However, some visitors worry about hygiene, so it is a good idea to choose busy stalls where the food is cooked in front of you.",
+    qs: [
+      { q: "Why is street food popular?", o: ["It is cheap, fresh and quick", "It is only for tourists", "It is very expensive"], a: 0 },
+      { q: "What should visitors do to stay safe?", o: ["Avoid street food completely", "Choose busy stalls", "Eat only at night"], a: 1 },
+      { q: "Pho is eaten only in the evening.", o: ["True", "False", "Not given"], a: 1 }
+    ] }
+];
+
+/* ===== Listening dictation (TTS) ===== */
+const LISTENING = [
+  "I usually get up at six o'clock.",
+  "Could you tell me the way to the station?",
+  "My hometown is famous for its delicious food.",
+  "I would like a glass of orange juice, please.",
+  "She works as a teacher in a small school.",
+  "We went to the beach last summer.",
+  "It takes about twenty minutes by bus.",
+  "I'm interested in learning new languages.",
+  "Could you say that again more slowly?",
+  "He doesn't like spicy food very much.",
+  "The weather is getting colder these days.",
+  "I have been studying English for two years.",
+  "What do you usually do at weekends?",
+  "My brother is better at maths than me.",
+  "Let's meet in front of the cinema at seven."
+];
+
+/* ===== Writing ===== */
+const WRITING = [
+  { id: "w1", title: "Thư/email ngắn: Mời bạn đi chơi (Task 1 General)", target: 100,
+    prompt: "A friend from another city is visiting you next month. Write an email to your friend. Say: where you will take him/her, what you will do there, and why it is a good place to visit. Write at least 100 words.",
+    frame: ["Dear ...,", "I'm very happy to hear that you will visit me next month.", "First, I'd like to take you to ... because ...", "We can also ... and try ...", "I'm sure you will enjoy it.", "Looking forward to seeing you soon.", "Best wishes,"] },
+  { id: "w2", title: "Thư xin đổi lịch học (Task 1 General)", target: 100,
+    prompt: "You can't attend your English class next week. Write a letter to your teacher. Explain why you can't come, say what you will do to catch up, and ask for the homework. Write at least 100 words.",
+    frame: ["Dear Mr/Ms ...,", "I'm writing to tell you that I can't attend ... because ...", "I'm very sorry for the inconvenience.", "To catch up, I will ...", "Could you please send me ...?", "Thank you for your understanding.", "Yours sincerely,"] },
+  { id: "w3", title: "Essay ngắn: Học online hay lớp truyền thống (Task 2)", target: 150,
+    prompt: "Some people think studying online is better than studying in a classroom. Do you agree or disagree? Give reasons and examples. Write at least 150 words.",
+    frame: ["Intro: Nowadays, many people ... In my opinion, ...", "Body 1: Firstly, ... For example, ...", "Body 2: Secondly, ... This means that ...", "Conclusion: In conclusion, I believe that ..."] },
+  { id: "w4", title: "Essay ngắn: Công nghệ và cuộc sống (Task 2)", target: 150,
+    prompt: "Technology has made our lives easier. What are the advantages and disadvantages? Write at least 150 words.",
+    frame: ["Intro: Technology plays an important role in ...", "Advantage: One major benefit is ... For instance, ...", "Disadvantage: However, a drawback is ... ", "Conclusion: Overall, ... outweigh ..."] }
+];
+
+/* Chủ đề từ gợi ý thêm (không gắn topic) */
+const COMMON_WORDS = new Set("about after again always because before between could every first great little never other people should still their there these thing think those three through together under until water where which while would write years during another having making something sometimes usually really because however example important different family friend friends children morning evening weekend weekends".split(" "));
+
+/* Bối cảnh dùng cho các tình huống giao tiếp */
+const SCENARIO_CONTEXT = {
+  "c-1": ["Quán ăn, nhà hàng, quán cà phê", "Đi ăn cùng đồng nghiệp hoặc khách", "Khi đi du lịch nước ngoài"],
+  "c-2": ["Đi du lịch, lạc đường", "Hỏi đường trong khuôn viên trường, công ty mới", "Hỏi nhân viên sân bay, nhà ga"],
+  "c-3": ["Ngày đầu đi làm hoặc đi học", "Sự kiện giao lưu, lớp học IELTS", "Phần đầu phòng thi nói IELTS"],
+  "c-4": ["Họp, làm việc với sếp hoặc giáo viên", "Xin đổi lịch hẹn", "Email hoặc tin nhắn công việc"],
+  "c-5": ["Đặt lịch khám, cắt tóc, đặt bàn", "Gọi điện cho khách sạn, dịch vụ", "Gọi hỏi thông tin cửa hàng"],
+  "c-6": ["Giờ nghỉ trưa ở công ty", "Chờ thang máy, pha cà phê", "Gặp hàng xóm, bạn của bạn"]
+};
+
+/* Câu hỏi để Claude/app hỏi lại bạn khi cá nhân hóa */
+const PROFILE_FIELDS = [
+  ["name", "Tên (gọi bạn là gì)", "Linh"],
+  ["job", "Công việc / ngành học", "Nhân viên kế toán"],
+  ["hometown", "Quê / nơi sống", "Hải Phòng, đang ở Hà Nội"],
+  ["family", "Gia đình", "Bố mẹ, 1 em trai"],
+  ["hobbies", "Sở thích", "Nghe nhạc, nấu ăn"],
+  ["food", "Món ăn yêu thích", "Phở, hải sản"],
+  ["plans", "Kế hoạch / mục tiêu sắp tới", "Thi IELTS 5.5, đi du học"],
+  ["daily", "Một ngày điển hình của bạn", "Đi làm bằng xe buýt, học tiếng Anh buổi tối"],
+  ["travel", "Chuyến đi gần nhất", "Đà Nẵng hè năm ngoái với bạn"],
+  ["extra", "Điều khác muốn nhắc đến", ""]
+];
+
+/* ===== Core: store, utils, TTS, audio store, sheet ===== */
+const KEY = "engcoach_v1";
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const rnd = a => a[Math.floor(Math.random() * a.length)];
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const ld = (d = new Date()) => d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+const addDays = (n) => { const d = new Date(); d.setDate(d.getDate() + n); return ld(d); };
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+const topicName = id => (TOPICS.find(t => t.id === id) || { vi: "Khác" }).vi;
+const topicIc = id => (TOPICS.find(t => t.id === id) || { ic: "📌" }).ic;
+const splitSent = t => (String(t).replace(/\s+/g, " ").match(/[^.!?]+[.!?]*["')]*/g) || [t]).map(s => s.trim()).filter(Boolean);
+
+function defaults() {
+  return { v: 1, profile: { level: "5.0-5.5", goal: "IELTS 5.0-5.5 + giao tiếp hằng ngày", data: {} }, vocab: [], mine: {}, speakLog: [], sources: [], writings: [], reads: {}, listen: { ok: 0, total: 0 }, daily: {}, streak: { last: "", count: 0 }, custom: [], settings: { rate: 0.9, voice: "" }, seeded: false };
+}
+function load() {
+  let s = null;
+  try { s = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) { }
+  s = Object.assign(defaults(), s || {});
+  if (!s.seeded) { seedVocab(s); s.seeded = true; }
+  return s;
+}
+function seedVocab(s) {
+  Object.entries(SEED_VOCAB).forEach(([t, arr]) => arr.forEach((x, i) => s.vocab.push({ id: "s-" + t + "-" + i, w: x[0], vi: x[1], ex: x[2], topic: t, box: -1, due: "", added: ld(), correct: 0, wrong: 0, seed: true })));
+}
+let S = load();
+let saveT = null, memFallback = false;
+function save() {
+  clearTimeout(saveT);
+  saveT = setTimeout(() => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { memFallback = true; } }, 250);
+}
+function saveNow() { clearTimeout(saveT); try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { memFallback = true; } }
+
+function bump(k, n = 1) {
+  const d = ld();
+  S.daily[d] = S.daily[d] || {};
+  S.daily[d][k] = (S.daily[d][k] || 0) + n;
+  if (S.streak.last !== d) {
+    const y = addDays(-1);
+    S.streak.count = S.streak.last === y ? S.streak.count + 1 : 1;
+    S.streak.last = d;
+  }
+  save();
+}
+const today = () => S.daily[ld()] || {};
+
+function toast(msg) {
+  const t = $("#toast"); t.textContent = msg; t.style.display = "block";
+  clearTimeout(toast.t); toast.t = setTimeout(() => t.style.display = "none", 2400);
+}
+function openSheet(html) { $("#sheet .box").innerHTML = html; $("#sheet").classList.add("show"); }
+function closeSheet() { $("#sheet").classList.remove("show"); }
+
+async function copyText(text) {
+  try { await navigator.clipboard.writeText(text); toast("Đã sao chép ✓"); return true; } catch (e) { }
+  const ta = document.createElement("textarea"); ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+  document.body.appendChild(ta); ta.select();
+  let ok = false; try { ok = document.execCommand("copy"); } catch (e) { }
+  ta.remove(); toast(ok ? "Đã sao chép ✓" : "Không sao chép được, hãy bôi đen và copy tay"); return ok;
+}
+function downloadFile(name, text, type = "text/plain") {
+  try {
+    const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([text], { type: type + ";charset=utf-8" }));
+    a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+  } catch (e) { toast("Trình duyệt chặn tải xuống, hãy dùng nút Sao chép"); }
+}
+
+/* ===== TTS ===== */
+let ttsToken = 0, voiceList = [];
+function loadVoices() { try { voiceList = speechSynthesis.getVoices().filter(v => /^en/i.test(v.lang)); } catch (e) { } }
+if ("speechSynthesis" in window) { loadVoices(); speechSynthesis.onvoiceschanged = loadVoices; }
+function pickVoice() {
+  if (S.settings.voice) { const v = voiceList.find(v => v.name === S.settings.voice); if (v) return v; }
+  return voiceList.find(v => /en[-_]US/i.test(v.lang)) || voiceList[0] || null;
+}
+function stopSpeak() { ttsToken++; try { speechSynthesis.cancel(); } catch (e) { } hideNP(); $$(".sent.cur").forEach(e => e.classList.remove("cur")); }
+function speakOnce(text, rate, tok) {
+  return new Promise(res => {
+    if (!("speechSynthesis" in window)) { toast("Máy chưa hỗ trợ đọc giọng nói"); return res(); }
+    const u = new SpeechSynthesisUtterance(text); u.lang = "en-US"; u.rate = rate || S.settings.rate || 0.9;
+    const v = pickVoice(); if (v) u.voice = v;
+    let done = false; const fin = () => { if (!done) { done = true; res(); } };
+    u.onend = fin; u.onerror = fin;
+    setTimeout(() => { if (tok === ttsToken) speechSynthesis.speak(u); else fin(); }, 60);
+    setTimeout(fin, Math.max(8000, text.length * 160));
+  });
+}
+const waitMs = ms => new Promise(r => setTimeout(r, ms));
+async function playText(text, o = {}) {
+  stopSpeak(); const tok = ttsToken;
+  const sents = splitSent(text);
+  for (let i = 0; i < sents.length; i++) {
+    if (tok !== ttsToken) return;
+    showNP(sents[i], i + 1, sents.length, o.shadow ? "Nghe, rồi nhắc lại thành tiếng" : "Đang đọc");
+    const el = o.scope ? $$(".sent", $(o.scope))[i] : null;
+    $$(".sent.cur").forEach(e => e.classList.remove("cur")); if (el) { el.classList.add("cur"); }
+    await speakOnce(sents[i], o.rate, tok);
+    if (tok !== ttsToken) return;
+    if (o.shadow) await waitMs(Math.max(1800, sents[i].split(" ").length * 650));
+  }
+  if (tok === ttsToken) { hideNP(); $$(".sent.cur").forEach(e => e.classList.remove("cur")); if (o.onend) o.onend(); }
+}
+function showNP(t, i, n, label) { const e = $("#np"); e.classList.add("show"); $(".t", e).innerHTML = `<small>${esc(label)} · ${i}/${n}</small>${esc(t)}`; }
+function hideNP() { $("#np").classList.remove("show"); }
+function audioBar(text, scope) {
+  const t = esc(text), sc = scope ? ` data-scope="${esc(scope)}"` : "";
+  return `<div class="abar"><button class="btn sm" data-act="say" data-t="${t}"${sc}>🔊 Nghe</button><button class="btn sm sec" data-act="say" data-r="0.62" data-t="${t}"${sc}>🐢 Chậm</button><button class="btn sm sec" data-act="shadow" data-t="${t}"${sc}>🗣 Nhắc lại theo</button></div>`;
+}
+function micro(text) { return `<button class="btn sm ghost" data-act="say" data-t="${esc(text)}" aria-label="Nghe">🔊</button>`; }
+
+/* ===== Audio recordings in IndexedDB ===== */
+let _db = null;
+function idb() {
+  return new Promise((res, rej) => {
+    if (_db) return res(_db);
+    try {
+      const rq = indexedDB.open("engcoach", 1);
+      rq.onupgradeneeded = () => rq.result.createObjectStore("rec");
+      rq.onsuccess = () => { _db = rq.result; res(_db); };
+      rq.onerror = () => rej(rq.error);
+    } catch (e) { rej(e); }
+  });
+}
+async function idbPut(k, blob) { const db = await idb(); return new Promise((res, rej) => { const tx = db.transaction("rec", "readwrite"); tx.objectStore("rec").put(blob, k); tx.oncomplete = res; tx.onerror = () => rej(tx.error); }); }
+async function idbGet(k) { const db = await idb(); return new Promise((res, rej) => { const rq = db.transaction("rec").objectStore("rec").get(k); rq.onsuccess = () => res(rq.result); rq.onerror = () => rej(rq.error); }); }
+async function idbDel(k) { try { const db = await idb(); db.transaction("rec", "readwrite").objectStore("rec").delete(k); } catch (e) { } }
+
+/* ===== SRS ===== */
+const INTERVALS = [0, 1, 2, 4, 8, 16, 30];
+function grade(w, g) { /* g: 0 quên, 1 hơi nhớ, 2 nhớ rõ */
+  if (g === 0) { w.box = 0; w.due = ld(); w.wrong++; }
+  else if (g === 1) { w.box = Math.max(1, w.box < 0 ? 1 : w.box); w.due = addDays(INTERVALS[w.box] || 1); w.correct++; }
+  else { w.box = Math.min(6, (w.box < 0 ? 0 : w.box) + 1); w.due = addDays(INTERVALS[w.box]); w.correct++; }
+  save();
+}
+const dueWords = (topic) => S.vocab.filter(w => w.box >= 0 && w.due <= ld() && (!topic || w.topic === topic));
+const newWords = (topic) => S.vocab.filter(w => w.box < 0 && (!topic || w.topic === topic));
+const learnedWords = () => S.vocab.filter(w => w.box >= 4);
+function addVocab(w, vi, ex, topic, src) {
+  w = w.trim(); if (!w) return null;
+  const dup = S.vocab.find(x => x.w.toLowerCase() === w.toLowerCase());
+  if (dup) return dup;
+  const o = { id: uid(), w, vi: vi.trim(), ex: (ex || "").trim(), topic: topic || "family", box: 0, due: ld(), added: ld(), correct: 0, wrong: 0, src: src || "" };
+  S.vocab.unshift(o); save(); return o;
+}
+const allSpeaking = () => SPEAKING.concat(S.custom);
+
+/* ===== Screens ===== */
+const U = { part: 1, topic: "", vtopic: "", vq: "", rate: {}, game: null, flash: null, dict: null, writeSel: null };
+const view = () => $("#view");
+const PART_LABEL = { 0: "Giao tiếp", 1: "Part 1", 2: "Part 2", 3: "Part 3" };
+const profileFilled = () => PROFILE_FIELDS.filter(f => (S.profile.data[f[0]] || "").trim()).length;
+
+function richText(text, id) {
+  return `<div id="${id}" class="rt">` + splitSent(text).map(s => `<span class="sent">` + s.replace(/([A-Za-z][A-Za-z'’-]*)|([^A-Za-z]+)/g, (m, w, o) => w ? `<span class="w" data-act="wtap" data-w="${esc(w)}">${esc(w)}</span>` : esc(o)) + ` </span>`).join("") + `</div>`;
+}
+function head(title, back) { return `<div class="top">${back ? `<button class="back" data-go="${back}">‹</button>` : ""}<h1>${title}</h1></div>`; }
+
+/* ---------- HOME ---------- */
+function vHome() {
+  const d = today(), due = dueWords().length, nw = Math.min(8, newWords().length);
+  const p1 = SPEAKING.filter(x => x.part === 1);
+  const idx = Math.abs([...ld()].reduce((a, c) => a + c.charCodeAt(0), 0)) % p1.length;
+  const q = p1[idx];
+  const odd = new Date().getDay() % 2 === 1;
+  const todos = [
+    { done: (d.speak || 0) >= 1, t: "Speaking: 1 câu hỏi hôm nay", s: q.q, go: "speak/" + q.id },
+    { done: (d.cards || 0) >= 10 || due + nw === 0, t: "Ôn từ vựng (10 thẻ)", s: `${due} từ đến hạn · ${nw} từ mới`, go: "vocab/study" },
+    { done: (d.games || 0) >= 1, t: "Chơi 1 trò chơi từ vựng", s: "Nghe, ghép, gõ từ", go: "vocab" },
+    { done: (d.listen || 0) >= 5, t: "Nghe chép 5 câu", s: "Luyện tai, chép chính tả", go: "more/listen" },
+    odd ? { done: (d.write || 0) >= 1, t: "Viết 1 đoạn ngắn", s: "Có khung gợi ý", go: "more/write" } : { done: (d.read || 0) >= 1, t: "Đọc 1 bài ngắn", s: "Vừa nghe vừa đọc", go: "more/read" }
+  ];
+  const done = todos.filter(t => t.done).length;
+  const name = (S.profile.data.name || "").trim();
+  const tips = ["Nói to thành tiếng 5 phút mỗi ngày hiệu quả hơn đọc thầm 1 giờ.", "Học cả cụm (get along with) thay vì từng từ riêng lẻ.", "Ghi âm lại, nghe lại: bạn sẽ tự phát hiện lỗi phát âm.", "Mỗi tuần gửi Hồ sơ học cho Claude để được nhận xét và bài tập mới.", "Part 2: nói đủ 1 phút. Dùng 'because', 'for example', 'so' để kéo dài ý."];
+  return `<h1>Chào ${esc(name || "bạn")} 👋</h1>
+  <p class="mute">Mục tiêu: ${esc(S.profile.goal)}</p>
+  <div class="card"><div class="row sp"><b>Hôm nay: ${done}/${todos.length}</b><span class="badge o">🔥 ${S.streak.count || 0} ngày liên tiếp</span></div>
+  <div class="prog" style="margin:8px 0 4px"><i style="width:${done / todos.length * 100}%"></i></div>
+  ${todos.map(t => `<div class="todo ${t.done ? "done" : ""}" data-go="${t.go}"><div class="ck">${t.done ? "✓" : ""}</div><div class="grow"><b>${esc(t.t)}</b><div class="sm mute">${esc(t.s)}</div></div><span class="mute">›</span></div>`).join("")}</div>
+  <div class="grid2"><div class="card stat"><b>${S.vocab.filter(w => w.box >= 0).length}</b><span>từ đã học</span></div><div class="card stat"><b>${S.speakLog.length}</b><span>lần luyện nói</span></div></div>
+  ${profileFilled() < 4 ? `<div class="card tap" data-go="me"><b>📝 Điền hồ sơ cá nhân</b><div class="sm mute">Để câu trả lời mẫu và bài tập gắn với cuộc sống của bạn (mục Hồ sơ).</div></div>` : ""}
+  <div class="note">💡 ${esc(rnd(tips))}</div>`;
+}
+
+/* ---------- SPEAKING ---------- */
+function vSpeakList() {
+  const items = allSpeaking().filter(x => x.part === U.part && (!U.topic || x.topic === U.topic));
+  const tabs = [1, 2, 3, 0].map(p => `<span class="chip ${U.part === p ? "on" : ""}" data-act="part" data-v="${p}">${PART_LABEL[p]}</span>`).join("");
+  const tps = `<span class="chip ${!U.topic ? "on" : ""}" data-act="stopic" data-v="">Tất cả</span>` + TOPICS.map(t => `<span class="chip ${U.topic === t.id ? "on" : ""}" data-act="stopic" data-v="${t.id}">${t.ic} ${t.vi}</span>`).join("");
+  const cnt = id => S.speakLog.filter(l => l.qid === id).length;
+  return `${head("Speaking")}
+  <div>${tabs}</div><div style="margin-top:4px">${tps}</div>
+  <p class="sm mute">${U.part === 1 ? "Part 1: trả lời ngắn 3-4 câu (20-30 giây)." : U.part === 2 ? "Part 2: nói liền mạch 1-2 phút theo gợi ý." : U.part === 3 ? "Part 3: giải thích ý kiến, có lý do và ví dụ." : "Tình huống giao tiếp hằng ngày, kèm bối cảnh sử dụng."}</p>
+  ${items.map(x => `<div class="card tap" data-go="speak/${x.id}"><div class="row sp"><span class="badge">${topicIc(x.topic)} ${topicName(x.topic)}</span>${x.custom ? `<span class="badge g">của tôi</span>` : ""}${S.mine[x.id] ? `<span class="badge g">đã soạn</span>` : ""}${cnt(x.id) ? `<span class="badge o">${cnt(x.id)} lần nói</span>` : ""}</div><div style="margin-top:6px;font-weight:600">${esc(x.q)}</div></div>`).join("") || `<p class="mute">Chưa có câu hỏi ở mục này.</p>`}
+  <button class="btn sec block" data-act="addq">＋ Thêm câu hỏi của tôi</button>`;
+}
+function vSpeak(id) {
+  const x = allSpeaking().find(q => q.id === id); if (!x) return vSpeakList();
+  const mine = S.mine[id] || "";
+  const goal = x.part === 2 ? 90 : x.part === 3 ? 45 : x.part === 0 ? 40 : 30;
+  const logs = S.speakLog.filter(l => l.qid === id).slice(-3).reverse();
+  const ctx = SCENARIO_CONTEXT[id];
+  const star = (k, lab) => `<div class="row sp"><span>${lab}</span><span class="stars">${[1, 2, 3, 4, 5].map(v => `<button class="${(U.rate[k] || 0) >= v ? "on" : ""}" data-act="star" data-k="${k}" data-v="${v}">★</button>`).join("")}</span></div>`;
+  return `${head(PART_LABEL[x.part] + " · " + topicName(x.topic), "speak")}
+  <div class="card"><div class="qtext">${esc(x.q)}</div>
+  ${x.cue ? `<ul>${x.cue.map(c => `<li>${esc(c)}</li>`).join("")}</ul>` : ""}
+  ${x.hint ? `<p class="mute sm">💡 ${esc(x.hint)}</p>` : ""}
+  ${(x.ideas || []).map(i => `<span class="chip plain">${esc(i)}</span>`).join("")}
+  ${ctx ? `<h3>Dùng trong bối cảnh</h3><ul class="sm">${ctx.map(c => `<li>${esc(c)}</li>`).join("")}</ul>` : ""}
+  ${x.q && !x.custom ? audioBar(x.part === 0 ? x.sample : x.q) : `<div class="abar"><button class="btn sm" data-act="say" data-t="${esc(x.q)}">🔊 Nghe câu hỏi</button></div>`}</div>
+
+  <div class="card"><h3 style="margin-top:0">✍️ Câu trả lời của tôi</h3>
+  <p class="sm mute">Tự viết câu trả lời gắn với cuộc sống của bạn. Có thể bấm "Chép bài mẫu" để sửa lại.</p>
+  <textarea data-bind="mine:${id}" id="mine" placeholder="Viết câu trả lời của bạn ở đây...">${esc(mine)}</textarea>
+  <div class="row" style="margin-top:8px">${x.sample ? `<button class="btn sm sec" data-act="copysample" data-id="${id}">📋 Chép bài mẫu</button>` : ""}<button class="btn sm" data-act="saymine">🔊 Nghe bài của tôi</button><button class="btn sm sec" data-act="shadowmine">🗣 Nhắc lại theo</button></div></div>
+
+  ${x.sample ? `<details class="card"><summary>📖 Bài mẫu (band 5.0-5.5)</summary><div class="sample">${richText(x.sample, "sampleTxt")}</div>${audioBar(x.sample, "#sampleTxt")}
+  <p class="sm mute">Chạm vào một từ để lưu vào từ vựng.</p>
+  ${(x.phrases || []).length ? `<h3>Cụm hữu ích</h3>${x.phrases.map(p => `<span class="chip" data-act="addphrase" data-p="${esc(p)}" data-id="${id}">${esc(p)} ＋</span>`).join("")}` : ""}</details>` : ""}
+
+  <div class="card"><h3 style="margin-top:0">🎙️ Luyện nói (mục tiêu ~${goal} giây)</h3>
+  <div class="c"><button class="rec" id="recBtn" data-act="rec">🎙️</button><div id="recTime" class="mute" style="margin-top:6px">Bấm để ghi âm</div></div>
+  <div id="recOut" class="c" style="margin-top:8px"></div>
+  <label>Chép lời bạn nói (gõ tay hoặc dùng nhận giọng nói, cần mạng)</label>
+  <textarea id="tr" style="min-height:80px" placeholder="Lời bạn vừa nói..."></textarea>
+  <div class="row" style="margin-top:6px"><button class="btn sm sec" data-act="stt" id="sttBtn">🗣 Nhận giọng nói → chữ</button></div>
+  <p class="note">Nhận giọng nói và ghi âm dùng chung micro nên hãy dùng lần lượt, không bật cùng lúc.</p>
+  <h3>Tự chấm</h3>${star("flu", "Trôi chảy")}${star("voc", "Từ vựng")}${star("gra", "Ngữ pháp")}${star("pro", "Phát âm")}
+  <label>Lỗi / điều cần sửa lần sau</label><textarea id="mist" style="min-height:70px" placeholder="vd: quên 's' ở động từ, phát âm sai 'comfortable'"></textarea>
+  <button class="btn block" style="margin-top:10px" data-act="savelog" data-id="${id}">💾 Lưu vào nhật ký</button></div>
+  ${logs.length ? `<h3>Lần luyện gần đây</h3>${logs.map(l => `<div class="card sm"><div class="row sp"><span class="mute">${esc(l.date)}</span><span>${["flu", "voc", "gra", "pro"].map(k => l.rate[k] || 0).join(" · ")} ★</span></div>${l.audio ? `<button class="btn sm sec" data-act="playrec" data-id="${l.audio}">▶ Nghe lại</button>` : ""}<div>${esc(l.mist || "")}</div></div>`).join("")}` : ""}
+  <button class="btn sec block" data-act="nextq" data-id="${id}">Câu tiếp theo ›</button>`;
+}
+
+/* ---------- VOCAB ---------- */
+function vVocab() {
+  const due = dueWords(U.vtopic).length, nw = newWords(U.vtopic).length;
+  const tps = `<span class="chip ${!U.vtopic ? "on" : ""}" data-act="vtopic" data-v="">Tất cả</span>` + TOPICS.map(t => `<span class="chip ${U.vtopic === t.id ? "on" : ""}" data-act="vtopic" data-v="${t.id}">${t.ic} ${t.vi}</span>`).join("");
+  const games = [["quiz", "🎯", "Chọn nghĩa", "Anh → Việt"], ["rev", "🔁", "Chọn từ", "Việt → Anh"], ["listen", "👂", "Nghe & chọn", "Nghe từ, chọn đáp án"], ["type", "⌨️", "Gõ từ", "Nhìn nghĩa, gõ tiếng Anh"], ["match", "🧩", "Ghép cặp", "Nối từ với nghĩa"]];
+  return `${head("Từ vựng")}<div>${tps}</div>
+  <div class="grid2" style="margin-top:8px"><div class="card stat"><b>${due}</b><span>đến hạn ôn</span></div><div class="card stat"><b>${nw}</b><span>từ mới chưa học</span></div></div>
+  <button class="btn block" data-go="vocab/study">📚 Học thẻ hôm nay</button>
+  <h2>Trò chơi</h2><div class="grid2">${games.map(g => `<div class="card tap c" data-go="vocab/game/${g[0]}"><div style="font-size:28px">${g[1]}</div><b>${g[2]}</b><div class="sm mute">${g[3]}</div></div>`).join("")}</div>
+  <div class="row" style="margin-top:6px"><button class="btn sec grow" data-act="addword">＋ Thêm từ</button><button class="btn sec grow" data-go="vocab/list">📋 Danh sách (${S.vocab.length})</button></div>`;
+}
+function vVocabList() {
+  const q = U.vq.toLowerCase();
+  const list = S.vocab.filter(w => (!U.vtopic || w.topic === U.vtopic) && (!q || w.w.toLowerCase().includes(q) || w.vi.toLowerCase().includes(q)));
+  return `${head("Danh sách từ", "vocab")}<input type="search" id="vq" placeholder="Tìm từ..." value="${esc(U.vq)}"><div id="vlist">${vlistHtml(list)}</div>`;
+}
+function vlistHtml(list) {
+  return list.slice(0, 200).map(w => `<div class="card"><div class="row sp"><div class="grow" data-act="editword" data-id="${w.id}"><b>${esc(w.w)}</b> <span class="badge ${w.box >= 4 ? "g" : w.box < 0 ? "" : "o"}">${w.box < 0 ? "mới" : w.box >= 4 ? "đã thuộc" : "đang học"}</span><div>${esc(w.vi)}</div><div class="sm mute">${esc(w.ex)}</div></div>${micro(w.w)}</div></div>`).join("") || `<p class="mute">Không có từ nào.</p>`;
+}
+function vStudy() {
+  if (!U.flash) {
+    const q = shuffle(dueWords(U.vtopic)).map(w => w.id).concat(newWords(U.vtopic).slice(0, 8).map(w => w.id));
+    U.flash = { q, i: 0, flip: false, done: 0 };
+  }
+  const F = U.flash;
+  if (F.i >= F.q.length) {
+    const n = F.done; U.flash = null;
+    return `${head("Học thẻ", "vocab")}<div class="card c"><div style="font-size:44px">🎉</div><h2>Xong rồi!</h2><p>Bạn đã ôn ${n} thẻ.</p><button class="btn block" data-go="vocab">Về Từ vựng</button></div>`;
+  }
+  const w = S.vocab.find(x => x.id === F.q[F.i]);
+  if (!w) { F.i++; return vStudy(); }
+  return `${head("Học thẻ", "vocab")}<div class="prog"><i style="width:${F.i / F.q.length * 100}%"></i></div><p class="sm mute c">${F.i + 1}/${F.q.length} · ${topicName(w.topic)}</p>
+  <div class="card flash" data-act="flip"><button class="btn sm sec" style="position:absolute;top:10px;right:10px" data-act="say" data-t="${esc(w.w)}" aria-label="Nghe">🔊</button><div class="big">${esc(w.w)}</div>
+  ${F.flip ? `<hr style="width:100%;border:0;border-top:1px solid var(--line)"><div style="font-size:20px;font-weight:700">${esc(w.vi)}</div><p class="mute">${esc(w.ex)}</p>${w.ex ? micro(w.ex) : ""}` : `<p class="mute sm">Chạm để xem nghĩa. Hãy thử nhớ trước.</p>`}</div>
+  ${F.flip ? `<div class="grid2" style="grid-template-columns:1fr 1fr 1fr"><button class="btn bad" data-act="gr" data-v="0">Quên</button><button class="btn warn" data-act="gr" data-v="1">Hơi nhớ</button><button class="btn ok" data-act="gr" data-v="2">Nhớ rõ</button></div>` : `<button class="btn block" data-act="flip">Xem nghĩa</button>`}`;
+}
+
+/* ---- games ---- */
+function gamePool() {
+  const pool = S.vocab.filter(w => !U.vtopic || w.topic === U.vtopic);
+  return pool.length >= 4 ? pool : S.vocab;
+}
+function startGame(type) {
+  const pool = gamePool();
+  if (pool.length < 4) { U.game = { type, err: true }; return; }
+  if (type === "match") {
+    const ws = shuffle(pool).slice(0, 6);
+    U.game = { type, ws, left: ws.map(w => w.id), right: shuffle(ws.map(w => w.id)), sel: null, done: [], wrongs: 0, t0: Date.now() };
+    return;
+  }
+  const qs = shuffle(pool).slice(0, 10);
+  U.game = { type, qs, i: 0, score: 0, ans: null, wrong: [], pool };
+}
+function gameOpts(g, w) {
+  const useVi = g.type === "quiz";
+  const others = shuffle(g.pool.filter(x => x.id !== w.id && (useVi ? x.vi !== w.vi : x.w !== w.w))).slice(0, 3);
+  return shuffle([w, ...others]);
+}
+function vGame(type) {
+  if (!U.game || U.game.type !== type) startGame(type);
+  const g = U.game;
+  const titles = { quiz: "Chọn nghĩa", rev: "Chọn từ", listen: "Nghe & chọn", type: "Gõ từ", match: "Ghép cặp" };
+  const back = head(titles[type], "vocab");
+  if (g.err) return back + `<div class="card">Cần ít nhất 4 từ trong danh sách để chơi.</div>`;
+  if (type === "match") {
+    const byId = id => S.vocab.find(w => w.id === id);
+    const fin = g.done.length === g.ws.length;
+    if (fin) { bump("games"); const sec = Math.round((Date.now() - g.t0) / 1000); U.game = null; return back + `<div class="card c"><div style="font-size:44px">🧩</div><h2>Hoàn thành!</h2><p>${sec} giây · ${g.wrongs} lần nối sai</p><button class="btn block" data-act="again" data-v="match">Chơi lại</button></div>`; }
+    return back + `<p class="mute sm c">Chạm một từ rồi chạm nghĩa tương ứng.</p><div class="pairs">${g.left.map((id, k) => {
+      const l = byId(id), r = byId(g.right[k]);
+      return `<button class="opt ${g.done.includes(id) ? "gone" : ""} ${g.sel === "L" + id ? "sel" : ""}" data-act="mpick" data-s="L" data-id="${id}">${esc(l.w)}</button><button class="opt ${g.done.includes(r.id) ? "gone" : ""} ${g.sel === "R" + r.id ? "sel" : ""}" data-act="mpick" data-s="R" data-id="${r.id}">${esc(r.vi)}</button>`;
+    }).join("")}</div>`;
+  }
+  if (g.i >= g.qs.length) {
+    bump("games"); const sc = g.score, tot = g.qs.length, wr = g.wrong; U.game = null;
+    return back + `<div class="card c"><div style="font-size:44px">${sc >= tot * .8 ? "🏆" : "👍"}</div><h2>${sc}/${tot} đúng</h2>${wr.length ? `<div style="text-align:left"><b>Ôn lại:</b>${wr.map(w => `<div>${esc(w.w)} — ${esc(w.vi)} ${micro(w.w)}</div>`).join("")}</div>` : "<p>Hoàn hảo!</p>"}<button class="btn block" style="margin-top:10px" data-act="again" data-v="${type}">Chơi lại</button></div>`;
+  }
+  const w = g.qs[g.i];
+  const head2 = `<div class="prog"><i style="width:${g.i / g.qs.length * 100}%"></i></div><p class="sm mute c">Câu ${g.i + 1}/${g.qs.length} · ${g.score} điểm</p>`;
+  if (type === "type") {
+    const ex = (w.ex || "").replace(new RegExp(w.w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "ig"), "_____");
+    return back + head2 + `<div class="card c"><div style="font-size:22px;font-weight:700">${esc(w.vi)}</div>${ex && ex !== w.ex ? `<p class="mute">${esc(ex)}</p>` : ""}<input type="text" id="tans" autocomplete="off" autocapitalize="none" placeholder="Gõ từ tiếng Anh..." ${g.ans ? "disabled" : ""} value="${esc(g.ans ? g.ans.val : "")}" style="margin-top:8px">
+    ${g.ans ? `<p style="font-weight:700;color:${g.ans.ok ? "var(--ok)" : "var(--bad)"}">${g.ans.ok ? "Đúng!" : "Đáp án: " + esc(w.w)}</p><button class="btn block" data-act="gnext">Tiếp ›</button>` : `<button class="btn block" style="margin-top:8px" data-act="tcheck">Kiểm tra</button><button class="btn sm ghost" data-act="say" data-t="${esc(w.w)}">🔊 Gợi ý: nghe</button>`}</div>`;
+  }
+  if (!g.opts || g.opts.q !== g.i) g.opts = { q: g.i, list: gameOpts(g, w) };
+  const prompt = type === "quiz" ? `<div class="big" style="font-size:28px;font-weight:800">${esc(w.w)}</div>${micro(w.w)}` : type === "rev" ? `<div style="font-size:24px;font-weight:800">${esc(w.vi)}</div>` : `<button class="btn" data-act="say" data-t="${esc(w.w)}">🔊 Nghe lại</button><p class="mute sm">Nghe và chọn từ đúng</p>`;
+  return back + head2 + `<div class="card c">${prompt}</div>` + g.opts.list.map(o => {
+    const label = type === "quiz" ? o.vi : o.w;
+    let cls = ""; if (g.ans) { if (o.id === w.id) cls = "ok"; else if (o.id === g.ans.id) cls = "bad"; }
+    return `<button class="opt ${cls}" data-act="gpick" data-id="${o.id}" ${g.ans ? "disabled" : ""}>${esc(label)}</button>`;
+  }).join("") + (g.ans ? `<button class="btn block" data-act="gnext">Tiếp ›</button>` : "");
+}
+function afterGameShow() {
+  const g = U.game; if (!g || g.err) return;
+  if ((g.type === "listen") && g.qs && g.i < g.qs.length && !g.ans && !g.spoken) { g.spoken = g.i; setTimeout(() => playText(g.qs[g.i].w, { rate: 0.8 }), 250); }
+}
+
+/* ---------- MORE ---------- */
+function vMore() {
+  const cards = [["more/sources", "📎", "Nguồn học của tôi", "Dán bài viết/hội thoại, chạm từ để lưu, nghe audio"], ["more/listen", "👂", "Nghe chép", "Nghe câu, gõ lại, chấm từng từ"], ["more/read", "📖", "Đọc hiểu", "Bài đọc ngắn kèm câu hỏi và audio"], ["more/write", "✍️", "Viết", "Đề IELTS Task 1 & 2 có khung gợi ý"]];
+  return `${head("Học thêm")}${cards.map(c => `<div class="card tap row" data-go="${c[0]}"><div style="font-size:30px">${c[1]}</div><div class="grow"><b>${c[2]}</b><div class="sm mute">${c[3]}</div></div><span class="mute">›</span></div>`).join("")}`;
+}
+function vSources() {
+  return `${head("Nguồn học", "more")}<button class="btn block" data-act="addsrc">＋ Thêm nguồn mới</button>
+  <p class="sm mute">Dán bài báo, đoạn hội thoại, phụ đề, câu mẫu mà Claude gửi... Mỗi nguồn đều có audio.</p>
+  ${S.sources.map(s => `<div class="card tap" data-go="more/source/${s.id}"><b>${esc(s.title)}</b><div class="sm mute">${esc(s.date)} · ${s.text.split(/\s+/).length} từ</div></div>`).join("") || `<p class="mute c">Chưa có nguồn nào.</p>`}`;
+}
+function personalQs(src) {
+  const p = S.profile.data, qs = [];
+  if (p.job) qs.push(`Bài này có dùng được khi nói về công việc/ngành học của bạn (${p.job}) không? Viết 1-2 câu tiếng Anh của riêng bạn.`);
+  if (p.hobbies) qs.push(`Nói 2 câu về sở thích "${p.hobbies}", dùng ít nhất 1 từ hoặc cụm từ trong bài.`);
+  if (p.daily) qs.push(`Kể 2 câu về một ngày của bạn (${p.daily}) bằng mẫu câu từ bài.`);
+  if (p.travel) qs.push(`Kể về chuyến đi "${p.travel}" bằng 2 câu, dùng thì quá khứ.`);
+  if (p.family) qs.push(`Giới thiệu gia đình bạn (${p.family}) bằng mẫu câu trong bài, nếu phù hợp.`);
+  if (!qs.length) qs.push("Từ nào trong bài bạn sẽ dùng được ngay hôm nay? Viết 1 câu với nó.", "Tình huống nào trong tuần này bạn sẽ cần nói như bài này?");
+  return qs.slice(0, 4);
+}
+function vSource(id) {
+  const s = S.sources.find(x => x.id === id); if (!s) return vSources();
+  const known = new Set(S.vocab.map(w => w.w.toLowerCase()));
+  const cands = [...new Set((s.text.toLowerCase().match(/[a-z][a-z'-]{6,}/g) || []))].filter(w => !known.has(w) && !COMMON_WORDS.has(w)).slice(0, 12);
+  return `${head(esc(s.title), "more/sources")}
+  <div class="card">${richText(s.text, "srcTxt")}${audioBar(s.text, "#srcTxt")}<p class="sm mute">Chạm vào một từ để tra nghĩa và lưu vào từ vựng.</p></div>
+  ${cands.length ? `<div class="card"><b>Từ gợi ý có thể mới với bạn</b><div>${cands.map(w => `<span class="chip" data-act="wtap" data-w="${esc(w)}">${esc(w)}</span>`).join("")}</div></div>` : ""}
+  <div class="card"><b>🎯 Câu hỏi để gắn với cuộc sống của bạn</b>${profileFilled() < 3 ? `<div class="note">Điền thêm <a href="#me">Hồ sơ cá nhân</a> để câu hỏi sát với bạn hơn.</div>` : ""}
+  <ul>${personalQs(s).map(q => `<li>${esc(q)}</li>`).join("")}</ul>
+  <textarea data-bind="srcnote:${id}" placeholder="Viết câu của bạn ở đây...">${esc(s.notes || "")}</textarea></div>
+  <div class="card"><b>📍 Dùng khi nào? (ghi chú)</b><p class="sm mute">Ví dụ bối cảnh mà Claude gợi ý cho bạn.</p><textarea data-bind="srcctx:${id}" style="min-height:80px" placeholder="vd: họp với đồng nghiệp, gọi đặt bàn...">${esc(s.ctx || "")}</textarea></div>
+  <button class="btn block" data-act="sendsrc" data-id="${id}">📤 Gửi nguồn này + hồ sơ cho Claude</button>
+  <button class="btn bad block" style="margin-top:8px" data-act="delsrc" data-id="${id}">Xóa nguồn</button>`;
+}
+
+/* ---- Listening ---- */
+function dictPool() {
+  const fromSrc = S.sources.flatMap(s => splitSent(s.text)).filter(x => x.split(" ").length >= 4 && x.split(" ").length <= 18);
+  const fromMine = Object.values(S.mine).flatMap(t => splitSent(t)).filter(x => x.split(" ").length >= 4 && x.split(" ").length <= 18);
+  return { base: LISTENING, mine: fromSrc.concat(fromMine) };
+}
+function vListen() {
+  const P = dictPool();
+  if (!U.dict) U.dict = { mode: "base", i: 0, list: null, res: null, n: 0, ok: 0 };
+  const D = U.dict;
+  if (!D.list) { D.list = shuffle(D.mode === "mine" && P.mine.length ? P.mine : P.base).slice(0, 8); D.i = 0; D.res = null; }
+  const acc = S.listen.total ? Math.round(S.listen.ok / S.listen.total * 100) : 0;
+  if (D.i >= D.list.length) { const n = D.ok; U.dict = null; return `${head("Nghe chép", "more")}<div class="card c"><div style="font-size:44px">🎧</div><h2>Xong bộ câu!</h2><p>Chính xác: ${n}/${D.list.length} câu</p><button class="btn block" data-act="dnew">Bộ mới</button></div>`; }
+  const sent = D.list[D.i];
+  return `${head("Nghe chép", "more")}
+  <div><span class="chip ${D.mode === "base" ? "on" : ""}" data-act="dmode" data-v="base">Câu có sẵn</span><span class="chip ${D.mode === "mine" ? "on" : ""}" data-act="dmode" data-v="mine">Từ nguồn & bài của tôi (${P.mine.length})</span></div>
+  <p class="sm mute">Độ chính xác tích lũy: ${acc}% · Câu ${D.i + 1}/${D.list.length}</p>
+  <div class="card c"><div class="row" style="justify-content:center"><button class="btn" data-act="say" data-t="${esc(sent)}">🔊 Nghe</button><button class="btn sec" data-act="say" data-r="0.6" data-t="${esc(sent)}">🐢 Chậm</button></div>
+  <textarea id="dans" style="min-height:70px;margin-top:10px" autocapitalize="none" placeholder="Gõ lại câu bạn nghe được..." ${D.res ? "disabled" : ""}>${esc(D.res ? D.res.val : "")}</textarea>
+  ${D.res ? `<div class="diff" style="text-align:left;margin:8px 0">${D.res.html}</div><p><b>${D.res.pct}%</b> chính xác</p><button class="btn block" data-act="dnext">Câu tiếp ›</button>` : `<div class="row" style="margin-top:8px"><button class="btn grow" data-act="dcheck">Kiểm tra</button><button class="btn sec" data-act="dshow">Xem đáp án</button></div>`}</div>`;
+}
+const norm = t => t.toLowerCase().replace(/[’]/g, "'").replace(/[^a-z0-9' ]/g, " ").split(/\s+/).filter(Boolean);
+function diffWords(ref, ans) {
+  const A = norm(ref), B = norm(ans), m = A.length, n = B.length;
+  const dp = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
+  for (let i = m - 1; i >= 0; i--) for (let j = n - 1; j >= 0; j--) dp[i][j] = A[i] === B[j] ? dp[i + 1][j + 1] + 1 : Math.max(dp[i + 1][j], dp[i][j + 1]);
+  const ok = new Array(m).fill(false); let i = 0, j = 0;
+  while (i < m && j < n) { if (A[i] === B[j]) { ok[i] = true; i++; j++; } else if (dp[i + 1][j] >= dp[i][j + 1]) i++; else j++; }
+  return { html: A.map((w, k) => `<span class="${ok[k] ? "g" : "r"}">${esc(w)}</span>`).join(" "), pct: m ? Math.round(ok.filter(Boolean).length / m * 100) : 0 };
+}
+
+/* ---- Reading ---- */
+function vReadList() {
+  return `${head("Đọc hiểu", "more")}${READING.map(r => `<div class="card tap" data-go="more/read/${r.id}"><b>${esc(r.title)}</b><div class="sm mute">${r.text.split(" ").length} từ · ${S.reads[r.id] != null ? `điểm tốt nhất ${S.reads[r.id]}/${r.qs.length}` : "chưa làm"}</div></div>`).join("")}`;
+}
+function vRead(id) {
+  const r = READING.find(x => x.id === id); if (!r) return vReadList();
+  const st = U.read && U.read.id === id ? U.read : (U.read = { id, ans: {}, done: false });
+  return `${head(esc(r.title), "more/read")}<div class="card">${richText(r.text, "readTxt")}${audioBar(r.text, "#readTxt")}<p class="sm mute">Chạm vào từ để lưu vào từ vựng.</p></div>
+  ${r.qs.map((q, qi) => `<div class="card"><b>${qi + 1}. ${esc(q.q)}</b>${q.o.map((o, oi) => { let cls = ""; if (st.done) { if (oi === q.a) cls = "ok"; else if (st.ans[qi] === oi) cls = "bad"; } else if (st.ans[qi] === oi) cls = "ok"; return `<button class="opt ${cls}" data-act="rans" data-q="${qi}" data-o="${oi}" ${st.done ? "disabled" : ""}>${esc(o)}</button>`; }).join("")}</div>`).join("")}
+  ${st.done ? `<div class="card c"><b>Kết quả: ${r.qs.filter((q, i) => st.ans[i] === q.a).length}/${r.qs.length}</b></div><button class="btn sec block" data-act="rreset">Làm lại</button>` : `<button class="btn block" data-act="rsubmit">Nộp bài</button>`}`;
+}
+
+/* ---- Writing ---- */
+function vWriteList() {
+  return `${head("Viết", "more")}${WRITING.map(w => { const d = S.writings.find(x => x.id === w.id); return `<div class="card tap" data-go="more/write/${w.id}"><b>${esc(w.title)}</b><div class="sm mute">Mục tiêu ${w.target}+ từ · ${d ? `đã viết ${wc(d.text)} từ` : "chưa viết"}</div></div>`; }).join("")}`;
+}
+const wc = t => (String(t || "").trim().match(/\S+/g) || []).length;
+function vWrite(id) {
+  const w = WRITING.find(x => x.id === id); if (!w) return vWriteList();
+  const d = S.writings.find(x => x.id === id), txt = d ? d.text : "";
+  return `${head("Viết", "more/write")}<div class="card"><b>${esc(w.title)}</b><p>${esc(w.prompt)}</p></div>
+  <details class="card"><summary>🧱 Khung gợi ý</summary><ul>${w.frame.map(f => `<li>${esc(f)}</li>`).join("")}</ul></details>
+  <textarea id="wtxt" data-bind="write:${id}" style="min-height:240px" placeholder="Viết bài của bạn...">${esc(txt)}</textarea>
+  <p class="sm mute"><span id="wc">${wc(txt)}</span>/${w.target} từ · tự động lưu</p>
+  <div class="row"><button class="btn sm sec" data-act="saywrite">🔊 Nghe lại bài mình viết</button><button class="btn sm" data-act="sendwrite" data-id="${id}">📤 Gửi Claude chấm</button></div>
+  <div class="card"><b>Tự kiểm tra</b><ul class="sm"><li>Đủ số từ yêu cầu?</li><li>Mỗi ý có ví dụ hoặc lý do?</li><li>Động từ chia đúng thì, có "s/ed"?</li><li>Dùng từ nối: firstly, however, for example, in conclusion?</li></ul></div>`;
+}
+
+/* ---------- PROFILE ---------- */
+function reportText(mode, srcId) {
+  const P = S.profile, pd = P.data;
+  const L = [];
+  const days = Object.keys(S.daily).length;
+  L.push(`# HỒ SƠ HỌC TIẾNG ANH (xuất ${ld()})`);
+  L.push(`\n## Vai trò của Claude\nBạn là huấn luyện viên tiếng Anh giao tiếp và IELTS Speaking riêng của tôi. Tôi đang ở mức ${P.level}, mục tiêu: ${P.goal}. Hãy trả lời bằng tiếng Việt, ví dụ tiếng Anh dễ hiểu (khoảng band 5.0-5.5), luôn kèm nghĩa tiếng Việt, và gắn ví dụ với cuộc sống của tôi bên dưới.`);
+  L.push(`\n## Thông tin cá nhân`);
+  PROFILE_FIELDS.forEach(f => { if ((pd[f[0]] || "").trim()) L.push(`- ${f[1]}: ${pd[f[0]]}`); });
+  if (profileFilled() === 0) L.push("- (chưa điền, hãy hỏi tôi vài câu về công việc, gia đình, sở thích, kế hoạch trước khi viết câu mẫu)");
+  if (mode === "source") {
+    const s = S.sources.find(x => x.id === srcId);
+    L.push(`\n## Nguồn học tôi muốn dùng: ${s.title}\n${s.text}`);
+    if (s.notes) L.push(`\n### Câu tôi tự viết\n${s.notes}`);
+    if (s.ctx) L.push(`\n### Ghi chú bối cảnh\n${s.ctx}`);
+    L.push(`\n## Yêu cầu\n1. Hỏi tôi 3-5 câu ngắn về cuộc sống của tôi để cá nhân hóa (nếu còn thiếu thông tin).\n2. Viết lại các câu/mẫu trong nguồn thành câu trả lời của chính tôi (tiếng Anh dễ, kèm nghĩa Việt).\n3. Tìm trên mạng thêm các câu hỏi giao tiếp hằng ngày liên quan và nêu bối cảnh dùng cụ thể (công sở, nhà hàng, gọi điện...), mỗi bối cảnh có ví dụ chi tiết.\n4. Chỉ ra 5-8 từ/cụm quan trọng để tôi lưu vào từ vựng (định dạng: từ | nghĩa | ví dụ).\n5. Cho tôi bài luyện nói ngắn để ghi âm.`);
+  } else if (mode === "write") {
+    const w = WRITING.find(x => x.id === srcId), d = S.writings.find(x => x.id === srcId);
+    L.push(`\n## Bài viết cần chấm\nĐề: ${w.prompt}\n\nBài của tôi:\n${d ? d.text : ""}\n\n## Yêu cầu\nChấm theo tiêu chí IELTS Writing (Task Response, Coherence, Vocabulary, Grammar) ở mức band 5.0-5.5, chỉ ra 5 lỗi quan trọng nhất, sửa lại từng câu và cho tôi 1 bài tập ngắn.`);
+  } else {
+    const weak = S.vocab.filter(w => w.wrong >= 2 || (w.box >= 0 && w.box <= 1 && w.wrong >= 1)).slice(0, 15);
+    L.push(`\n## Tiến độ\n- Số ngày có học: ${days}, chuỗi hiện tại: ${S.streak.count}\n- Từ vựng: ${S.vocab.length} tổng, ${S.vocab.filter(w => w.box >= 0).length} đã học, ${learnedWords().length} đã thuộc\n- Nghe chép: ${S.listen.total ? Math.round(S.listen.ok / S.listen.total * 100) + "%" : "chưa có"}\n- Đọc hiểu: ${Object.entries(S.reads).map(([k, v]) => k + "=" + v).join(", ") || "chưa có"}`);
+    if (weak.length) L.push(`\n## Từ hay quên\n` + weak.map(w => `- ${w.w} (${w.vi})`).join("\n"));
+    const mine = S.vocab.filter(w => !w.seed).slice(0, 15);
+    if (mine.length) L.push(`\n## Từ tôi tự thêm gần đây\n` + mine.map(w => `- ${w.w}: ${w.vi}${w.ex ? " | " + w.ex : ""}`).join("\n"));
+    const logs = S.speakLog.slice(-8).reverse();
+    if (logs.length) L.push(`\n## Nhật ký Speaking gần đây\n` + logs.map(l => `### ${l.date} · ${l.q}\n- Tự chấm (trôi chảy/từ vựng/ngữ pháp/phát âm): ${["flu", "voc", "gra", "pro"].map(k => l.rate[k] || 0).join("/")}\n- Lời tôi nói: ${l.tr || "(không có)"}\n- Lỗi tôi ghi: ${l.mist || "(không có)"}`).join("\n"));
+    const ans = Object.entries(S.mine).filter(([, v]) => v.trim()).slice(-5);
+    if (ans.length) L.push(`\n## Câu trả lời tôi tự soạn\n` + ans.map(([k, v]) => { const q = allSpeaking().find(x => x.id === k); return `- Q: ${q ? q.q : k}\n  A: ${v}`; }).join("\n"));
+    if (S.writings.length) L.push(`\n## Bài viết gần đây\n` + S.writings.slice(0, 2).map(w => `- (${w.id}, ${wc(w.text)} từ) ${w.text.slice(0, 600)}`).join("\n"));
+    L.push(`\n## Yêu cầu của tôi\n1. Nhận xét tiến độ và 3 điểm yếu lớn nhất.\n2. Sửa lỗi trong nhật ký Speaking, đưa câu đúng và lý do.\n3. Đóng vai giám khảo: hỏi tôi lần lượt 5 câu Part 1 dựa trên thông tin cá nhân, chờ tôi trả lời từng câu rồi nhận xét.\n4. Cho kế hoạch học 7 ngày tới và 10 từ/cụm mới theo chủ đề tôi hay nói.`);
+  }
+  return L.join("\n");
+}
+function vMe() {
+  const pd = S.profile.data;
+  const nrec = S.speakLog.filter(l => l.audio).length;
+  return `${head("Hồ sơ")}
+  <div class="grid2"><div class="card stat"><b>${S.streak.count || 0}</b><span>ngày liên tiếp</span></div><div class="card stat"><b>${S.speakLog.length}</b><span>lần luyện nói</span></div></div>
+  <div class="card"><b>👤 Thông tin của tôi</b><p class="sm mute">Dùng để cá nhân hóa câu hỏi và bài mẫu. Chỉ lưu trên máy bạn.</p>
+  ${PROFILE_FIELDS.map(f => `<label>${f[1]}</label><input type="text" data-bind="pf:${f[0]}" placeholder="vd: ${esc(f[2])}" value="${esc(pd[f[0]] || "")}">`).join("")}
+  <label>Trình độ hiện tại</label><input type="text" data-bind="pl:level" value="${esc(S.profile.level)}"><label>Mục tiêu</label><input type="text" data-bind="pl:goal" value="${esc(S.profile.goal)}"></div>
+  <div class="card"><b>🧠 Hồ sơ học gửi cho Claude</b><p class="sm mute">Bấm sao chép rồi dán vào cuộc chat với Claude. Claude đọc nhật ký, từ yếu, bài viết của bạn và đóng vai thầy kèm.</p>
+  <div class="row"><button class="btn grow" data-act="copyrep">📋 Sao chép hồ sơ</button><button class="btn sec" data-act="dlrep">⬇ .md</button></div>
+  <details><summary>Xem trước nội dung</summary><pre class="rep" id="repPrev"></pre></details></div>
+  <div class="card"><b>💾 Sao lưu dữ liệu</b><p class="sm mute">${memFallback ? "⚠️ Trình duyệt chặn lưu trữ, hãy tải bản sao lưu thường xuyên." : "Dữ liệu tự lưu trên máy. Nên tải bản sao lưu mỗi tuần."} Có ${nrec} bản ghi âm lưu trong máy (không nằm trong file sao lưu).</p>
+  <div class="row"><button class="btn sec" data-act="dljson">⬇ Tải sao lưu (.json)</button><label class="btn sec" style="margin:0">⬆ Khôi phục<input type="file" accept=".json,application/json" id="imp" hidden></label></div></div>
+  <div class="card"><b>🔊 Giọng đọc</b><label>Tốc độ mặc định</label><select data-bind="rate:x"><option value="0.7" ${S.settings.rate == 0.7 ? "selected" : ""}>Chậm (0.7)</option><option value="0.9" ${S.settings.rate == 0.9 ? "selected" : ""}>Vừa (0.9)</option><option value="1" ${S.settings.rate == 1 ? "selected" : ""}>Bình thường (1.0)</option></select>
+  <label>Giọng</label><select data-bind="voice:x"><option value="">Tự chọn</option>${voiceList.map(v => `<option value="${esc(v.name)}" ${S.settings.voice === v.name ? "selected" : ""}>${esc(v.name)} (${esc(v.lang)})</option>`).join("")}</select>
+  ${voiceList.length ? "" : `<p class="note">Chưa thấy giọng tiếng Anh. Vào Cài đặt Android → Quản lý → Chuyển văn bản thành giọng nói → tải tiếng Anh.</p>`}</div>
+  <button class="btn bad block" data-act="reset">Xóa toàn bộ dữ liệu</button>`;
+}
+
+/* ===== Router + events ===== */
+const R = { mr: null, chunks: [], stream: null, t0: 0, iv: null, blob: null, recog: null };
+function recCleanup() {
+  try { if (R.mr && R.mr.state === "recording") { R.mr.onstop = null; R.mr.stop(); } } catch (e) { }
+  try { R.stream && R.stream.getTracks().forEach(t => t.stop()); } catch (e) { }
+  try { R.recog && R.recog.stop(); } catch (e) { }
+  clearInterval(R.iv); R.mr = null; R.recog = null; R.blob = null;
+}
+function currentHtml() {
+  const p = (location.hash || "#home").slice(1).split("/");
+  switch (p[0]) {
+    case "speak": return p[1] ? vSpeak(p[1]) : vSpeakList();
+    case "vocab":
+      if (p[1] === "list") return vVocabList();
+      if (p[1] === "study") return vStudy();
+      if (p[1] === "game") return vGame(p[2]);
+      return vVocab();
+    case "more":
+      if (p[1] === "sources") return vSources();
+      if (p[1] === "source") return vSource(p[2]);
+      if (p[1] === "listen") return vListen();
+      if (p[1] === "read") return p[2] ? vRead(p[2]) : vReadList();
+      if (p[1] === "write") return p[2] ? vWrite(p[2]) : vWriteList();
+      return vMore();
+    case "me": return vMe();
+    default: return vHome();
+  }
+}
+function draw(scroll) {
+  const y = window.scrollY;
+  view().innerHTML = currentHtml();
+  const seg = (location.hash || "#home").slice(1).split("/")[0] || "home";
+  $$("nav a").forEach(a => a.classList.toggle("on", a.dataset.r === (["home", "speak", "vocab", "more", "me"].includes(seg) ? seg : "home")));
+  if (scroll) window.scrollTo(0, 0); else window.scrollTo(0, y);
+  const prev = $("#repPrev"); if (prev) prev.textContent = reportText("coach");
+  afterGameShow();
+}
+function route() {
+  stopSpeak(); recCleanup();
+  const h = (location.hash || "#home").slice(1);
+  if (!h.startsWith("vocab/study")) U.flash = null;
+  if (!h.startsWith("vocab/game")) U.game = null;
+  draw(true);
+}
+addEventListener("hashchange", route);
+
+/* ---- sheets ---- */
+function wordSheet(o) {
+  const ex = (o.id && S.vocab.find(x => x.id === o.id)) || (o.w && S.vocab.find(x => x.w.toLowerCase() === o.w.toLowerCase()));
+  const e = ex || { w: o.w || "", vi: "", ex: o.ex || "", topic: o.topic || U.vtopic || "family" };
+  const q = encodeURIComponent(e.w.toLowerCase());
+  openSheet(`<h2 style="margin-top:0">${ex ? "Sửa từ" : "Thêm từ vựng"}</h2>
+  <label>Từ / cụm từ</label><input type="text" id="f_w" value="${esc(e.w)}" autocapitalize="none">
+  <div class="row" style="margin:6px 0"><button class="btn sm sec" data-act="say" data-t="${esc(e.w)}">🔊 Nghe</button><a class="btn sm sec" style="text-decoration:none" target="_blank" rel="noopener" href="https://dictionary.cambridge.org/dictionary/english-vietnamese/${q}">Tra Cambridge</a><a class="btn sm sec" style="text-decoration:none" target="_blank" rel="noopener" href="https://translate.google.com/?sl=en&tl=vi&text=${q}&op=translate">Google Dịch</a></div>
+  <label>Nghĩa tiếng Việt</label><input type="text" id="f_vi" value="${esc(e.vi)}" placeholder="Nhập nghĩa (tra khi có mạng)">
+  <label>Câu ví dụ</label><textarea id="f_ex" style="min-height:70px">${esc(e.ex)}</textarea>
+  <label>Chủ đề</label><select id="f_topic">${TOPICS.map(t => `<option value="${t.id}" ${t.id === e.topic ? "selected" : ""}>${t.ic} ${t.vi}</option>`).join("")}</select>
+  <div class="row" style="margin-top:14px"><button class="btn grow" data-act="saveword" data-id="${ex ? ex.id : ""}">Lưu</button>${ex ? `<button class="btn bad" data-act="delword" data-id="${ex.id}">Xóa</button>` : ""}<button class="btn ghost" data-act="close">Đóng</button></div>`);
+}
+function confirmTap(el, msg) {
+  if (el.dataset.arm) return true;
+  el.dataset.arm = "1"; const old = el.textContent; el.textContent = msg || "Bấm lần nữa để xác nhận";
+  setTimeout(() => { delete el.dataset.arm; el.textContent = old; }, 3000); return false;
+}
+
+/* ---- actions ---- */
+const ACT = {
+  close() { closeSheet(); },
+  stop() { stopSpeak(); },
+  part(el) { U.part = +el.dataset.v; draw(); },
+  stopic(el) { U.topic = el.dataset.v; draw(); },
+  vtopic(el) { U.vtopic = el.dataset.v; draw(); },
+  say(el) { playText(el.dataset.t, { rate: el.dataset.r ? +el.dataset.r : undefined, scope: el.dataset.scope }); },
+  shadow(el) { playText(el.dataset.t, { rate: 0.85, shadow: true, scope: el.dataset.scope }); },
+  saymine() { const t = $("#mine").value.trim(); if (!t) return toast("Hãy viết câu trả lời trước"); playText(t); },
+  shadowmine() { const t = $("#mine").value.trim(); if (!t) return toast("Hãy viết câu trả lời trước"); playText(t, { shadow: true, rate: 0.85 }); },
+  copysample(el) { const x = allSpeaking().find(q => q.id === el.dataset.id); $("#mine").value = x.sample; S.mine[x.id] = x.sample; save(); toast("Đã chép bài mẫu, hãy sửa cho giống bạn"); },
+  addphrase(el) { const x = allSpeaking().find(q => q.id === el.dataset.id); wordSheet({ w: el.dataset.p, ex: "", topic: x ? x.topic : "" }); },
+  addq() {
+    openSheet(`<h2 style="margin-top:0">Thêm câu hỏi của tôi</h2><label>Loại</label><select id="q_part"><option value="1">Part 1</option><option value="2">Part 2</option><option value="3">Part 3</option><option value="0">Giao tiếp</option></select>
+    <label>Chủ đề</label><select id="q_topic">${TOPICS.map(t => `<option value="${t.id}">${t.ic} ${t.vi}</option>`).join("")}</select>
+    <label>Câu hỏi / tình huống (tiếng Anh)</label><textarea id="q_q" style="min-height:80px"></textarea>
+    <div class="row" style="margin-top:12px"><button class="btn grow" data-act="saveq">Lưu</button><button class="btn ghost" data-act="close">Đóng</button></div>`);
+  },
+  saveq() {
+    const q = $("#q_q").value.trim(); if (!q) return toast("Nhập câu hỏi");
+    const part = +$("#q_part").value; U.part = part;
+    S.custom.push({ id: "u-" + uid(), part, topic: $("#q_topic").value, q, hint: "", ideas: [], sample: "", phrases: [], custom: true }); save(); closeSheet(); draw();
+  },
+  star(el) { const k = el.dataset.k, v = +el.dataset.v; U.rate[k] = v; $$('[data-act="star"][data-k="' + k + '"]').forEach(b => b.classList.toggle("on", +b.dataset.v <= v)); },
+  async rec() {
+    const btn = $("#recBtn");
+    if (R.mr && R.mr.state === "recording") { R.mr.stop(); return; }
+    if (!navigator.mediaDevices || !window.MediaRecorder) return toast("Trình duyệt này chưa hỗ trợ ghi âm");
+    try { R.stream = await navigator.mediaDevices.getUserMedia({ audio: true }); } catch (e) { return toast("Cần cho phép micro để ghi âm (hoặc mở app bằng Chrome)"); }
+    R.chunks = []; R.mr = new MediaRecorder(R.stream);
+    R.mr.ondataavailable = e => { if (e.data && e.data.size) R.chunks.push(e.data); };
+    R.mr.onstop = () => {
+      clearInterval(R.iv); R.stream.getTracks().forEach(t => t.stop());
+      R.blob = new Blob(R.chunks, { type: R.mr.mimeType || "audio/webm" });
+      const sec = Math.round((Date.now() - R.t0) / 1000);
+      const b = $("#recBtn"), o = $("#recOut"), t = $("#recTime");
+      if (b) b.classList.remove("on"); if (t) t.textContent = "Đã ghi " + sec + " giây";
+      if (o) o.innerHTML = `<audio controls src="${URL.createObjectURL(R.blob)}" style="width:100%"></audio>`;
+    };
+    R.mr.start(); R.t0 = Date.now(); btn.classList.add("on");
+    R.iv = setInterval(() => { const t = $("#recTime"); if (t) t.textContent = "● Đang ghi " + Math.round((Date.now() - R.t0) / 1000) + " giây (bấm để dừng)"; }, 500);
+  },
+  stt() {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) return toast("Trình duyệt chưa hỗ trợ nhận giọng nói");
+    const btn = $("#sttBtn");
+    if (R.recog) { R.recog.stop(); return; }
+    const r = new SR(); r.lang = "en-US"; r.interimResults = true; r.continuous = true;
+    let fin = $("#tr").value.trim();
+    r.onresult = e => { let it = ""; for (let i = e.resultIndex; i < e.results.length; i++) { const t = e.results[i][0].transcript; if (e.results[i].isFinal) fin += (fin ? " " : "") + t.trim(); else it += t; } const tr = $("#tr"); if (tr) tr.value = (fin + " " + it).trim(); };
+    r.onend = () => { R.recog = null; const b = $("#sttBtn"); if (b) b.textContent = "🗣 Nhận giọng nói → chữ"; };
+    r.onerror = e => { toast("Nhận giọng nói lỗi (" + (e.error || "?") + "). Cần mạng và quyền micro."); };
+    try { r.start(); R.recog = r; btn.textContent = "⏹ Dừng nhận giọng nói"; } catch (e) { toast("Không bật được nhận giọng nói"); }
+  },
+  async savelog(el) {
+    const id = el.dataset.id, x = allSpeaking().find(q => q.id === id);
+    const log = { id: uid(), qid: id, q: x.q, part: x.part, date: ld(), ts: Date.now(), tr: $("#tr").value.trim(), mist: $("#mist").value.trim(), rate: Object.assign({}, U.rate), mine: S.mine[id] || "" };
+    if (R.blob) { try { await idbPut(log.id, R.blob); log.audio = log.id; } catch (e) { toast("Không lưu được ghi âm trên máy này"); } R.blob = null; }
+    S.speakLog.push(log);
+    const withAudio = S.speakLog.filter(l => l.audio);
+    if (withAudio.length > 40) withAudio.slice(0, withAudio.length - 40).forEach(l => { idbDel(l.audio); delete l.audio; });
+    U.rate = {}; bump("speak"); save(); toast("Đã lưu vào nhật ký ✓"); draw();
+  },
+  async playrec(el) { try { const b = await idbGet(el.dataset.id); if (!b) return toast("Không tìm thấy bản ghi"); new Audio(URL.createObjectURL(b)).play(); } catch (e) { toast("Không phát được bản ghi"); } },
+  nextq(el) {
+    const cur = allSpeaking().find(q => q.id === el.dataset.id);
+    const list = allSpeaking().filter(q => q.part === cur.part && q.id !== cur.id && (!U.topic || q.topic === U.topic));
+    location.hash = "#speak/" + (list.length ? rnd(list).id : cur.id);
+  },
+  addword() { wordSheet({}); },
+  editword(el) { wordSheet({ id: el.dataset.id }); },
+  saveword(el) {
+    const w = $("#f_w").value.trim(), vi = $("#f_vi").value.trim(); if (!w) return toast("Nhập từ cần lưu");
+    const ex = $("#f_ex").value.trim(), topic = $("#f_topic").value;
+    const id = el.dataset.id, cur = id && S.vocab.find(x => x.id === id);
+    if (cur) { Object.assign(cur, { w, vi, ex, topic }); } else { const dup = S.vocab.find(x => x.w.toLowerCase() === w.toLowerCase()); if (dup) { Object.assign(dup, { vi: vi || dup.vi, ex: ex || dup.ex }); } else addVocab(w, vi, ex, topic); }
+    save(); closeSheet(); toast("Đã lưu từ ✓"); draw();
+  },
+  delword(el) { if (!confirmTap(el, "Bấm lần nữa để xóa")) return; S.vocab = S.vocab.filter(x => x.id !== el.dataset.id); save(); closeSheet(); draw(); },
+  wtap(el) { const s = el.closest(".sent"); wordSheet({ w: el.dataset.w, ex: s ? s.textContent.trim() : "" }); },
+  flip() { if (U.flash && !U.flash.flip) { U.flash.flip = true; draw(); } },
+  gr(el) {
+    const F = U.flash, w = S.vocab.find(x => x.id === F.q[F.i]), g = +el.dataset.v;
+    grade(w, g); if (g === 0) F.q.push(w.id); F.i++; F.flip = false; F.done++; bump("cards"); draw(true);
+  },
+  again(el) { U.game = null; draw(); },
+  gpick(el) {
+    const g = U.game, w = g.qs[g.i]; if (g.ans) return;
+    const ok = el.dataset.id === w.id; g.ans = { id: el.dataset.id, ok };
+    if (ok) { g.score++; w.correct++; } else { g.wrong.push(w); w.wrong++; if (w.box > 0) w.box--; }
+    save(); draw();
+  },
+  tcheck() {
+    const g = U.game, w = g.qs[g.i], val = $("#tans").value; if (g.ans) return;
+    const ok = norm(val).join(" ") === norm(w.w).join(" "); g.ans = { ok, val };
+    if (ok) { g.score++; w.correct++; } else { g.wrong.push(w); w.wrong++; if (w.box > 0) w.box--; }
+    save(); draw();
+  },
+  gnext() { const g = U.game; g.i++; g.ans = null; draw(); },
+  mpick(el) {
+    const g = U.game, id = el.dataset.id, side = el.dataset.s;
+    if (!g.sel) { g.sel = side + id; draw(); return; }
+    const prevSide = g.sel[0], prevId = g.sel.slice(1);
+    if (prevSide === side) { g.sel = side + id; draw(); return; }
+    if (prevId === id) { g.done.push(id); g.ws.find(w => w.id === id).correct++; }
+    else { g.wrongs++; const w = g.ws.find(w => w.id === (prevSide === "L" ? prevId : id)); if (w) w.wrong++; }
+    g.sel = null; save(); draw();
+  },
+  addsrc() {
+    openSheet(`<h2 style="margin-top:0">Thêm nguồn học</h2><label>Tên nguồn</label><input type="text" id="s_t" placeholder="vd: Hội thoại đặt bàn nhà hàng">
+    <label>Nội dung tiếng Anh (dán vào)</label><textarea id="s_x" style="min-height:180px" placeholder="Dán bài đọc, hội thoại, phụ đề, câu mẫu..."></textarea>
+    <div class="row" style="margin-top:12px"><button class="btn grow" data-act="savesrc">Lưu</button><button class="btn ghost" data-act="close">Đóng</button></div>`);
+  },
+  savesrc() {
+    const t = $("#s_t").value.trim(), x = $("#s_x").value.trim(); if (!x) return toast("Hãy dán nội dung vào");
+    const s = { id: uid(), title: t || x.slice(0, 40), text: x, date: ld(), notes: "", ctx: "" }; S.sources.unshift(s); save(); closeSheet(); location.hash = "#more/source/" + s.id;
+  },
+  sendsrc(el) { copyText(reportText("source", el.dataset.id)).then(() => toast("Đã sao chép. Dán vào chat với Claude nhé")); },
+  delsrc(el) { if (!confirmTap(el, "Bấm lần nữa để xóa nguồn")) return; S.sources = S.sources.filter(s => s.id !== el.dataset.id); save(); location.hash = "#more/sources"; },
+  dmode(el) { U.dict.mode = el.dataset.v; U.dict.list = null; draw(); },
+  dnew() { U.dict = null; draw(); },
+  dcheck() {
+    const D = U.dict, sent = D.list[D.i], val = $("#dans").value.trim(); if (!val) return toast("Hãy gõ câu bạn nghe được");
+    const r = diffWords(sent, val); D.res = { val, html: r.html, pct: r.pct }; S.listen.total++; if (r.pct >= 90) { S.listen.ok++; D.ok++; } bump("listen"); save(); draw();
+  },
+  dshow() { const D = U.dict, sent = D.list[D.i], r = diffWords(sent, $("#dans").value); D.res = { val: $("#dans").value, html: r.html.replace(/class="r"/g, 'class="g"'), pct: 0 }; S.listen.total++; bump("listen"); save(); draw(); },
+  dnext() { U.dict.i++; U.dict.res = null; draw(); },
+  rans(el) { U.read.ans[+el.dataset.q] = +el.dataset.o; draw(); },
+  rsubmit() { const r = READING.find(x => x.id === U.read.id), sc = r.qs.filter((q, i) => U.read.ans[i] === q.a).length; U.read.done = true; S.reads[r.id] = Math.max(S.reads[r.id] || 0, sc); bump("read"); save(); draw(); },
+  rreset() { U.read = null; draw(); },
+  saywrite() { const t = $("#wtxt").value.trim(); if (!t) return toast("Hãy viết vài câu trước"); playText(t); },
+  sendwrite(el) { const d = S.writings.find(x => x.id === el.dataset.id); if (!d || !wc(d.text)) return toast("Hãy viết bài trước"); copyText(reportText("write", el.dataset.id)).then(() => toast("Đã sao chép. Dán vào chat với Claude để được chấm")); },
+  copyrep() { copyText(reportText("coach")); },
+  dlrep() { downloadFile("ho-so-hoc-" + ld() + ".md", reportText("coach"), "text/markdown"); },
+  dljson() { downloadFile("engcoach-backup-" + ld() + ".json", JSON.stringify(S), "application/json"); },
+  reset(el) { if (!confirmTap(el, "Bấm lần nữa để XÓA HẾT")) return; try { localStorage.removeItem(KEY); } catch (e) { } S = load(); saveNow(); location.hash = "#home"; draw(true); toast("Đã xóa dữ liệu"); }
+};
+document.addEventListener("click", e => {
+  if (e.target.id === "sheet") return closeSheet();
+  const a = e.target.closest("[data-act]");
+  if (a) { const f = ACT[a.dataset.act]; if (f) { e.preventDefault(); f(a, e); return; } }
+  const g = e.target.closest("[data-go]");
+  if (g) location.hash = "#" + g.dataset.go;
+});
+document.addEventListener("input", e => {
+  const t = e.target, b = t.dataset && t.dataset.bind;
+  if (t.id === "vq") { U.vq = t.value; const q = U.vq.toLowerCase(); $("#vlist").innerHTML = vlistHtml(S.vocab.filter(w => (!U.vtopic || w.topic === U.vtopic) && (!q || w.w.toLowerCase().includes(q) || w.vi.toLowerCase().includes(q)))); return; }
+  if (!b) return;
+  const [k, id] = b.split(":");
+  if (k === "mine") S.mine[id] = t.value;
+  else if (k === "pf") S.profile.data[id] = t.value;
+  else if (k === "pl") S.profile[id] = t.value;
+  else if (k === "srcnote") { const s = S.sources.find(x => x.id === id); if (s) s.notes = t.value; }
+  else if (k === "srcctx") { const s = S.sources.find(x => x.id === id); if (s) s.ctx = t.value; }
+  else if (k === "write") {
+    let d = S.writings.find(x => x.id === id); if (!d) { d = { id, text: "", ts: Date.now() }; S.writings.unshift(d); }
+    d.text = t.value; d.ts = Date.now(); const c = $("#wc"); if (c) c.textContent = wc(t.value);
+    if (wc(t.value) >= 40 && !today().write) bump("write");
+  }
+  save();
+});
+document.addEventListener("change", e => {
+  const t = e.target;
+  if (t.dataset && t.dataset.bind === "rate:x") { S.settings.rate = +t.value; save(); }
+  if (t.dataset && t.dataset.bind === "voice:x") { S.settings.voice = t.value; save(); }
+  if (t.id === "imp" && t.files[0]) {
+    const fr = new FileReader();
+    fr.onload = () => { try { const d = JSON.parse(fr.result); if (!d || !Array.isArray(d.vocab)) throw 0; S = Object.assign(defaults(), d); saveNow(); toast("Đã khôi phục ✓"); draw(true); } catch (err) { toast("File sao lưu không hợp lệ"); } };
+    fr.readAsText(t.files[0]);
+  }
+});
+document.addEventListener("keydown", e => { if (e.key === "Enter" && e.target.id === "tans") { e.preventDefault(); ACT.tcheck(); } });
+addEventListener("beforeunload", saveNow);
+
+/* init */
+if ("serviceWorker" in navigator && /^https?:/.test(location.protocol)) { navigator.serviceWorker.register("sw.js").catch(() => { }); }
+route();
+
+</script>
+</body>
+</html>
